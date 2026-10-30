@@ -55,6 +55,7 @@ public final class SelectionMenuHooks {
     private static volatile boolean observersRegistered;
     private static long nextObserverAttemptAt;
     private static volatile boolean probePending = true;
+    private static volatile int debugBudget = 10;
     private static long nextProbePollAt;
 
     /** 由 XposedInit 在 system_server 加载时调用。 */
@@ -136,6 +137,11 @@ public final class SelectionMenuHooks {
         long queryStarted = SystemClock.elapsedRealtime();
         try {
             boolean originalQuery = allowOriginalQuery && isOriginalQuery(intent);
+            if (originalQuery || debugBudget-- > 0) {
+                log(android.util.Log.INFO, "SelectionMenuControl", "PROCESS_TEXT query original=" + originalQuery
+                        + " allowOriginal=" + allowOriginalQuery + " callingUid=" + Binder.getCallingUid()
+                        + " extra=" + (intent != null && intent.getBooleanExtra(SystemRuleStore.QUERY_ORIGINAL_EXTRA, false)));
+            }
             SystemRuleStore.Snapshot rules = readRules();
             if (!originalQuery && (!rules.valid || (rules.hiddenComponents.isEmpty()
                     && rules.orderedComponents.isEmpty() && rules.aliases.isEmpty()))) {
@@ -216,6 +222,7 @@ public final class SelectionMenuHooks {
             respondToProbe(false);
             return effectiveResult;
         } catch (Throwable error) {
+            XposedBridge.log(error);
             ModuleDiagnostics.fault(ModuleDiagnostics.Code.QUERY_FAILED);
             return result;
         } finally {
@@ -305,6 +312,8 @@ public final class SelectionMenuHooks {
             Context context = getSystemContext();
             if (context != null) {
                 String nonce = SystemRuleStore.respondToProbe(context, lastRespondedProbeNonce);
+                log(android.util.Log.INFO, "SelectionMenuControl", "probe respond trusted=" + trustedModuleQuery
+                        + " nonce=" + nonce);
                 if (nonce != null) {
                     lastRespondedProbeNonce = nonce;
                 }

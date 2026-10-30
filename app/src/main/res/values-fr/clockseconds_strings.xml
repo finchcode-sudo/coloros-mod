@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="module_name">Secondes à l\'heure</string>
+    <string name="module_description">Affiche les secondes sur l\'heure de la barre d\'état. Touchez l\'heure pour activer/désactiver les secondes ; les dizaines de l\'heure sont colorées en rouge.</string>
+
+    <string name="settings_title">Secondes à l\'heure</string>
+    <string name="settings_status_title">État actuel</string>
+    <string name="settings_enabled">Secondes : activées</string>
+    <string name="settings_disabled">Secondes : désactivées</string>
+    <string name="settings_gesture_title">Geste pour basculer les secondes</string>
+    <string name="settings_gesture_click">Toucher l\'heure</string>
+    <string name="settings_gesture_long_press">Appui long sur l\'heure</string>
+    <string name="settings_hint">Remarque : les réglages prennent effet immédiatement. Sinon, redémarrez SystemUI ou l\'appareil. Si le toucher gêne le déploiement du panneau, utilisez le double appui.</string>
+    <string name="settings_refresh">Actualiser l\'état</string>
+    <string name="settings_section_general">Général</string>
+    <string name="settings_update_auto">Vérifier les mises à jour automatiquement</string>
+    <string name="settings_update_auto_sum">Rechercher les nouvelles versions au démarrage de l\'application</string>
+    <string name="settings_update_check">Rechercher les mises à jour</string>
+    <string name="settings_update_open">Obtenir la mise à jour</string>
+    <string name="settings_update_open_sum">Obtenir la dernière version sur GitHub</string>
+    <string name="settings_section_about">À propos du module</string>
+    <string name="settings_about_version">Version : %1$s (%2$d)</string>
+    <string name="settings_about_github">GitHub</string>
+    <string name="settings_about_github_sum">Voir le code source sur GitHub</string>
+    <string name="settings_about_licenses">Licences open source</string>
+    <string name="settings_about_licenses_sum">Bibliothèques open source tierces utilisées</string>
+    <string name="update_checking">Recherche de mises à jour…</string>
+    <string name="update_latest">Vous utilisez la dernière version</string>
+    <string name="update_failed">Échec de la vérification des mises à jour. Vérifiez votre connexion et réessayez</string>
+    <string name="update_dialog_title">Nouvelle version disponible</string>
+    <string name="update_dialog_msg">Nouvelle version %1$s trouvée (actuelle : %2$s). Aller à la page de mise à jour ?</string>
+    <string name="update_go">Mettre à jour</string>
+    <string name="update_later">Plus tard</string>
+    <string name="licenses_text">Xposed API (de.robv.android.xposed:api:82) : Apache License 2.0
+Code source de ce module : MIT © kelebao</string>
+    <string name="settings_color_title">Couleur de l\'heure</string>
+    <string name="settings_color_hint">Touchez une couleur pour la changer — effet immédiat</string>
+    <string name="settings_write_failed">Échec de l\'écriture. Vérifiez que le module est actif dans SystemUI ou accordez WRITE_SECURE_SETTINGS via adb</string>
+    <string name="settings_color_enable">Activer la couleur de l\'heure</string>
+    <string name="settings_color_enable_sum">Désactivez pour revenir au style par défaut du système</string>
+    <string name="settings_gesture_hint">Utilisez ce geste sur l\'heure de la barre d\'état pour activer ou désactiver les secondes</string>
+    <string name="settings_gesture_applied">Passé à %1$s — effet immédiat. Si cela ne fonctionne pas, redémarrez SystemUI</string>
+    <string name="settings_gesture_double_tap">Double appui sur l\'heure</string>
+    <string name="settings_network_time">Heure réseau %1$s (locale %2$s)</string>
+    <string name="settings_network_time_fail">Heure réseau indisponible — touchez pour réessayer</string>
+    <string name="settings_sync_time">Synchroniser</string>
+    <string name="settings_sync_requested">Heure auto activée — synchronisation imminente</string>
+    <string name="settings_preview_hint">Astuce : appuyez sur l\'heure de la barre d\'état (en haut à gauche) pour afficher/masquer les secondes</string>
+    <string name="tile_label">Afficher les secondes</string>
+    <string name="settings_rule_title">Nom de l\'horloge</string>
+    <string name="settings_rule_sum">Si l\'horloge n\'est pas détectée, saisissez son nom de ressource</string>
+    <string name="settings_rule_set">Régler</string>
+    <string name="settings_rule_msg">Si l\'horloge de la barre d\'état n\'est pas détectée sur un autre appareil, saisissez son nom de ressource (ex. clock). Vide = règles intégrées. Redémarrez SystemUI après.</string>
+    <string name="settings_rule_apply">Appliquer</string>
+    <string name="settings_rule_reset">Réinitialiser</string>
+    <string name="settings_rule_applied">Règle enregistrée. Redémarrez SystemUI.</string>
+    <string name="settings_rule_detect">Détection auto</string>
+    <string name="settings_rule_detecting">Détection de l\'horloge de la barre d\'état…</string>
+    <string name="settings_rule_detected">Détectée : %1$s</string>
+    <string name="settings_rule_detect_fail">Aucune horloge trouvée. Touchez d\'abord l\'horloge de la barre d\'état, ou redémarrez SystemUI et réessayez.</string>
+    <string name="settings_rule_current">Actuel : %1$s</string>
+    <string name="settings_rule_builtin">intégré</string>
+    <string name="settings_rule_detected_builtin">Horloge de la barre d\'état reconnue. Règles intégrées actives — aucune configuration supplémentaire requise.</string>
+    <string name="settings_rule_detected_custom">Horloge de la barre d\'état reconnue. Configuration enregistrée. Redémarrez SystemUI pour appliquer.</string>
+    <string name="settings_rule_dialog_desc">Vous ne savez pas ? Touchez « Détection auto » ci-dessous pour terminer en un geste. Vous pouvez aussi saisir le nom de ressource du widget d’heure (vide = règles intégrées).</string>
+    <string name="settings_rule_or_manual">Ou saisissez manuellement le nom de ressource du widget d’heure</string>
+    <string name="settings_rule_confirm_title">Nom peut-être invalide</string>
+    <string name="settings_rule_confirm_msg">« %1$s » ne ressemble pas au nom de ressource d’un widget d’heure (contient généralement clock ou time) et pourrait ne pas fonctionner. Essayez d’abord « Détection auto ». Enregistrer quand même ?</string>
+    <string name="settings_rule_confirm_save">Enregistrer quand même</string>
+    <string name="settings_launcher_title">Afficher l\'icône dans le lanceur</string>
+    <string name="settings_launcher_sum">Ajouter un raccourci vers les réglages sur l\'écran d\'accueil ; si désactivé, ouvrez-les depuis le gestionnaire LSPosed</string>
+    <string name="settings_launcher_on">Icône du lanceur affichée</string>
+    <string name="settings_launcher_off">Icône du lanceur masquée</string>
+    <string name="launcher_label">Horloge</string>
+    <string name="settings_about_guide">Guide d\'utilisation</string>
+    <string name="settings_about_guide_sum">Mode d\'emploi et FAQ</string>
+    <string name="settings_intro_title">Bienvenue dans Clock Seconds</string>
+    <string name="settings_intro_msg">Merci d\'avoir installé Clock Seconds !\n\n1. Activer : dans LSPosed, activez ce module et cochez « SystemUI », puis redémarrez SystemUI.\n2. Afficher/masquer les secondes : touchez l\'heure de la barre d\'état (en haut à gauche) pour basculer. Si cela entre en conflit avec la descente du panneau de notification, passez à un double-toucher dans « Geste de bascule des secondes ».\n3. Couleur des heures : colorez le chiffre des dizaines de l\'heure à votre guise ; à la désactivation, la valeur par défaut du système est restaurée.\n4. Heure flottante : appuyez longuement sur l\'heure de la barre d\'état pour afficher l\'heure réseau.\n5. Les changements sont immédiats ; sinon, redémarrez SystemUI ou l\'appareil.</string>
+    <string name="settings_intro_ok">Commencer</string>
+
+    <!-- 小时颜色色块的无障碍朗读名（颜色名） -->
+    <string name="swatch_red">Rouge</string>
+    <string name="swatch_orange">Orange</string>
+    <string name="swatch_amber">Ambre</string>
+    <string name="swatch_green">Vert</string>
+    <string name="swatch_cyan">Cyan</string>
+    <string name="swatch_blue">Bleu</string>
+    <string name="swatch_purple">Violet</string>
+    <string name="swatch_pink">Rose</string>
+    <string name="swatch_white">Blanc</string>
+    <string name="swatch_grey">Gris</string>
+</resources>

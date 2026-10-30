@@ -1213,6 +1213,9 @@ public class XposedInit extends XposedModule {
             LauncherHooks.hookLauncher(lpparam);
         } else if ("com.android.systemui".equals(lpparam.packageName)) {
             SystemUiHooks.hookSystemUi(lpparam);
+            // 状态栏时钟显秒(移植自 ClockSeconds): 自带开关, 在 SystemUI 主进程与 :ui 进程内生效。
+            try { com.rikumi.colorosmod.clockseconds.hook.ClockSecondsModule.handleLoadPackage(lpparam); }
+            catch (Throwable error) { log("clock seconds hooks unavailable: " + error); }
         } else if ("com.coloros.weather2".equals(lpparam.packageName)
                 || "net.oneplus.weather".equals(lpparam.packageName)) {
             WeatherHooks.hookWeather(lpparam);

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="module_name">Ρολόι με δευτερόλεπτα</string>
+    <string name="module_description">Εμφανίζει τα δευτερόλεπτα στην ώρα της γραμμής κατάστασης. Πατήστε την ώρα για εναλλαγή των δευτερολέπτων· οι δεκάδες της ώρας εμφανίζονται με κόκκινο χρώμα.</string>
+
+    <string name="settings_title">Ρολόι με δευτερόλεπτα</string>
+    <string name="settings_status_title">Τρέχουσα κατάσταση</string>
+    <string name="settings_enabled">Δευτερόλεπτα: ενεργά</string>
+    <string name="settings_disabled">Δευτερόλεπτα: ανενεργά</string>
+    <string name="settings_gesture_title">Χειρονομία εναλλαγής δευτερολέπτων</string>
+    <string name="settings_gesture_click">Πατήστε την ώρα</string>
+    <string name="settings_gesture_long_press">Πατήστε παρατεταμένα την ώρα</string>
+    <string name="settings_hint">Σημείωση: οι ρυθμίσεις εφαρμόζονται αμέσως. Αν δεν λειτουργούν, επανεκκινήστε το SystemUI ή τη συσκευή. Αν το πάτημα συγκρούεται με το άνοιγμα του πίνακα, χρησιμοποιήστε διπλό πάτημα.</string>
+    <string name="settings_refresh">Ανανέωση κατάστασης</string>
+    <string name="settings_section_general">Γενικά</string>
+    <string name="settings_update_auto">Αυτόματος έλεγχος ενημερώσεων</string>
+    <string name="settings_update_auto_sum">Έλεγχος νέων εκδόσεων κατά το άνοιγμα της εφαρμογής</string>
+    <string name="settings_update_check">Έλεγχος ενημερώσεων</string>
+    <string name="settings_update_open">Λήψη ενημέρωσης</string>
+    <string name="settings_update_open_sum">Λήψη της τελευταίας έκδοσης από το GitHub</string>
+    <string name="settings_section_about">Σχετικά με τη μονάδα</string>
+    <string name="settings_about_version">Έκδοση: %1$s (%2$d)</string>
+    <string name="settings_about_github">GitHub</string>
+    <string name="settings_about_github_sum">Δείτε τον πηγαίο κώδικα στο GitHub</string>
+    <string name="settings_about_licenses">Άδειες ανοιχτού κώδικα</string>
+    <string name="settings_about_licenses_sum">Βιβλιοθήκες ανοιχτού κώδικα τρίτων που χρησιμοποιούνται</string>
+    <string name="update_checking">Έλεγχος για ενημερώσεις…</string>
+    <string name="update_latest">Έχετε ήδη την τελευταία έκδοση</string>
+    <string name="update_failed">Ο έλεγχος ενημερώσεων απέτυχε. Ελέγξτε το δίκτυο και δοκιμάστε ξανά</string>
+    <string name="update_dialog_title">Διαθέσιμη νέα έκδοση</string>
+    <string name="update_dialog_msg">Βρέθηκε η νέα έκδοση %1$s (τρέχουσα: %2$s). Μετάβαση στη σελίδα ενημέρωσης;</string>
+    <string name="update_go">Ενημέρωση</string>
+    <string name="update_later">Αργότερα</string>
+    <string name="licenses_text">Xposed API (de.robv.android.xposed:api:82): Apache License 2.0
+Πηγαίος κώδικας αυτής της μονάδας: MIT © kelebao</string>
+    <string name="settings_color_title">Χρώμα ώρας</string>
+    <string name="settings_color_hint">Πατήστε ένα χρώμα για αλλαγή — εφαρμόζεται αμέσως</string>
+    <string name="settings_write_failed">Αποτυχία εγγραφής. Βεβαιωθείτε ότι η μονάδα είναι ενεργή στο SystemUI ή δώστε WRITE_SECURE_SETTINGS μέσω adb</string>
+    <string name="settings_color_enable">Ενεργοποίηση χρώματος ώρας</string>
+    <string name="settings_color_enable_sum">Αν το απενεργοποιήσετε, επιστρέφει η προεπιλεγμένη εμφάνιση</string>
+    <string name="settings_gesture_hint">Χρησιμοποιήστε αυτή τη χειρονομία στην ώρα της γραμμής κατάστασης για εναλλαγή δευτερολέπτων</string>
+    <string name="settings_gesture_applied">Άλλαξε σε %1$s — εφαρμόζεται αμέσως. Αν δεν λειτουργεί, επανεκκινήστε το SystemUI</string>
+    <string name="settings_gesture_double_tap">Διπλό πάτημα στην ώρα</string>
+    <string name="settings_network_time">Ώρα δικτύου %1$s (τοπική %2$s)</string>
+    <string name="settings_network_time_fail">Δεν ήταν δυνατή η λήψη ώρας δικτύου — πατήστε για επανάληψη</string>
+    <string name="settings_sync_time">Συγχρονισμός</string>
+    <string name="settings_sync_requested">Ενεργοποιήθηκε η αυτόματη ώρα — σύντομα θα συγχρονιστεί</string>
+    <string name="settings_preview_hint">Συμβουλή: Πατήστε την ώρα της γραμμής κατάστασης (πάνω αριστερά) για εμφάνιση/απόκρυψη δευτερολέπτων</string>
+    <string name="tile_label">Εμφάνιση δευτερολέπτων</string>
+    <string name="settings_rule_title">Όνομα ρολογιού</string>
+    <string name="settings_rule_sum">Αν το ρολόι δεν εντοπίζεται, εισάγετε το όνομα πόρου</string>
+    <string name="settings_rule_set">Ρύθμιση</string>
+    <string name="settings_rule_msg">Αν το ρολόι της γραμμής κατάστασης δεν εντοπίζεται σε άλλη συσκευή, εισάγετε το όνομα πόρου (π.χ. clock). Κενό = ενσωματωμένοι κανόνες. Επανεκκινήστε το SystemUI μετά.</string>
+    <string name="settings_rule_apply">Εφαρμογή</string>
+    <string name="settings_rule_reset">Επαναφορά</string>
+    <string name="settings_rule_applied">Ο κανόνας αποθηκεύτηκε. Επανεκκινήστε το SystemUI.</string>
+    <string name="settings_rule_detect">Αυτόματη ανίχνευση</string>
+    <string name="settings_rule_detecting">Ανίχνευση ρολογιού γραμμής κατάστασης…</string>
+    <string name="settings_rule_detected">Εντοπίστηκε: %1$s</string>
+    <string name="settings_rule_detect_fail">Δεν βρέθηκε ρολόι. Πατήστε πρώτα το ρολόι της γραμμής κατάστασης ή επανεκκινήστε το SystemUI και δοκιμάστε ξανά.</string>
+    <string name="settings_rule_current">Τρέχον: %1$s</string>
+    <string name="settings_rule_builtin">ενσωματωμένος</string>
+    <string name="settings_rule_detected_builtin">Το ρολόι της γραμμής κατάστασης αναγνωρίστηκε. Ενσωματωμένοι κανόνες ενεργοί — δεν απαιτείται επιπλέον ρύθμιση.</string>
+    <string name="settings_rule_detected_custom">Το ρολόι της γραμμής κατάστασης αναγνωρίστηκε. Η ρύθμιση αποθηκεύτηκε. Επανεκκινήστε το SystemUI για εφαρμογή.</string>
+    <string name="settings_rule_dialog_desc">Δεν ξέρετε; Πατήστε «Αυτόματη ανίχνευση» παρακάτω και τελειώσατε. Μπορείτε επίσης να εισαγάγετε το όνομα πόρου του γραφικού στοιχείου ώρας (κενό = ενσωματωμένοι κανόνες).</string>
+    <string name="settings_rule_or_manual">Ή εισαγάγετε χειροκίνητα το όνομα πόρου του γραφικού στοιχείου ώρας</string>
+    <string name="settings_rule_confirm_title">Το όνομα ίσως δεν είναι έγκυρο</string>
+    <string name="settings_rule_confirm_msg">Το «%1$s» δεν μοιάζει με όνομα πόρου γραφικού στοιχείου ώρας (συνήθως περιέχει clock ή time) και ίσως δεν λειτουργήσει. Δοκιμάστε πρώτα «Αυτόματη ανίχνευση». Αποθήκευση παρόλα αυτά;</string>
+    <string name="settings_rule_confirm_save">Αποθήκευση παρόλα αυτά</string>
+    <string name="settings_launcher_title">Εμφάνιση εικονιδίου στον εκκινητή</string>
+    <string name="settings_launcher_sum">Προσθήκη συντόμευσης ρυθμίσεων στην αρχική οθόνη· αν είναι ανενεργό, ανοίξτε το από τον διαχειριστή LSPosed</string>
+    <string name="settings_launcher_on">Το εικονίδιο εμφανίστηκε</string>
+    <string name="settings_launcher_off">Το εικονίδιο κρύφτηκε</string>
+    <string name="launcher_label">Ρολόι</string>
+    <string name="settings_about_guide">Οδηγός χρήσης</string>
+    <string name="settings_about_guide_sum">Τρόπος χρήσης και Συχνές ερωτήσεις</string>
+    <string name="settings_intro_title">Καλώς ήρθατε στο Clock Seconds</string>
+    <string name="settings_intro_msg">Ευχαριστούμε που εγκαταστήσατε το Clock Seconds!\n\n1. Ενεργοποίηση: Στο LSPosed, ενεργοποιήστε αυτό το module και επιλέξτε «SystemUI», μετά επανεκκινήστε το SystemUI.\n2. Εμφάνιση/απόκρυψη δευτερολέπτων: Πατήστε την ώρα στη γραμμή κατάστασης (πάνω αριστερά) για εναλλαγή. Αν συγκρούεται με την κάθοδο της σκιάς ειδοποιήσεων, αλλάξτε σε διπλό πάτημα στην «Χειρονομία εναλλαγής δευτερολέπτων».\n3. Χρώμα ώρας: Δώστε στο ψηφίο των δεκάδων της ώρας οποιοδήποτε χρώμα· αν απενεργοποιηθεί, επιστρέφει στις προεπιλογές συστήματος.\n4. Αιωρούμενη ώρα: Πατήστε παρατεταμένα την ώρα στη γραμμή κατάστασης για να δείτε την ώρα δικτύου.\n5. Οι αλλαγές εφαρμόζονται αμέσως· αν όχι, επανεκκινήστε το SystemUI ή τη συσκευή.</string>
+    <string name="settings_intro_ok">Ξεκινήστε</string>
+
+    <!-- 小时颜色色块的无障碍朗读名（颜色名） -->
+    <string name="swatch_red">Κόκκινο</string>
+    <string name="swatch_orange">Πορτοκαλί</string>
+    <string name="swatch_amber">Κεχριμπάρι</string>
+    <string name="swatch_green">Πράσινο</string>
+    <string name="swatch_cyan">Κυανό</string>
+    <string name="swatch_blue">Μπλε</string>
+    <string name="swatch_purple">Μωβ</string>
+    <string name="swatch_pink">Ροζ</string>
+    <string name="swatch_white">Λευκό</string>
+    <string name="swatch_grey">Γκρι</string>
+</resources>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="module_name">Segundos na hora</string>
+    <string name="module_description">Mostra os segundos na hora da barra de status. Toque na hora para alternar os segundos; a dezena da hora fica vermelha.</string>
+
+    <string name="settings_title">Segundos na hora</string>
+    <string name="settings_status_title">Estado atual</string>
+    <string name="settings_enabled">Segundos: ativados</string>
+    <string name="settings_disabled">Segundos: desativados</string>
+    <string name="settings_gesture_title">Gesto para alternar segundos</string>
+    <string name="settings_gesture_click">Tocar na hora</string>
+    <string name="settings_gesture_long_press">Pressionar a hora</string>
+    <string name="settings_hint">Observação: as alterações valem na hora. Se não funcionarem, reinicie o SystemUI ou o aparelho. Se o toque conflitar com abrir o painel, use toque duplo.</string>
+    <string name="settings_refresh">Atualizar estado</string>
+    <string name="settings_section_general">Geral</string>
+    <string name="settings_update_auto">Verificar atualizações automaticamente</string>
+    <string name="settings_update_auto_sum">Buscar novas versões ao abrir o aplicativo</string>
+    <string name="settings_update_check">Verificar atualizações</string>
+    <string name="settings_update_open">Obter atualização</string>
+    <string name="settings_update_open_sum">Obter a versão mais recente do GitHub</string>
+    <string name="settings_section_about">Sobre o módulo</string>
+    <string name="settings_about_version">Versão: %1$s (%2$d)</string>
+    <string name="settings_about_github">GitHub</string>
+    <string name="settings_about_github_sum">Ver o código-fonte no GitHub</string>
+    <string name="settings_about_licenses">Licenças de código aberto</string>
+    <string name="settings_about_licenses_sum">Bibliotecas de código aberto de terceiros usadas</string>
+    <string name="update_checking">Verificando atualizações…</string>
+    <string name="update_latest">Você está na versão mais recente</string>
+    <string name="update_failed">Falha ao verificar atualizações. Verifique sua conexão e tente novamente</string>
+    <string name="update_dialog_title">Nova versão disponível</string>
+    <string name="update_dialog_msg">Nova versão %1$s encontrada (atual: %2$s). Ir para a página de atualização?</string>
+    <string name="update_go">Atualizar</string>
+    <string name="update_later">Mais tarde</string>
+    <string name="licenses_text">Xposed API (de.robv.android.xposed:api:82): Apache License 2.0
+Código-fonte deste módulo: MIT © kelebao</string>
+    <string name="settings_color_title">Cor da hora</string>
+    <string name="settings_color_hint">Toque em uma cor para alterar — aplica na hora</string>
+    <string name="settings_write_failed">Falha ao gravar. Verifique se o módulo está ativo no SystemUI ou conceda WRITE_SECURE_SETTINGS via adb</string>
+    <string name="settings_color_enable">Ativar cor da hora</string>
+    <string name="settings_color_enable_sum">Desative para voltar ao estilo padrão do sistema</string>
+    <string name="settings_gesture_hint">Use este gesto na hora da barra de status para ativar ou desativar os segundos</string>
+    <string name="settings_gesture_applied">Alterado para %1$s — aplica na hora. Se não funcionar, reinicie o SystemUI</string>
+    <string name="settings_gesture_double_tap">Toque duplo na hora</string>
+    <string name="settings_network_time">Hora da rede %1$s (local %2$s)</string>
+    <string name="settings_network_time_fail">Não foi possível obter a hora da rede — toque para tentar de novo</string>
+    <string name="settings_sync_time">Sincronizar</string>
+    <string name="settings_sync_requested">Hora automática ativada — sincroniza em instantes</string>
+    <string name="settings_preview_hint">Dica: toque na hora da barra de status (canto superior esquerdo) para mostrar/ocultar segundos</string>
+    <string name="tile_label">Mostrar segundos</string>
+    <string name="settings_rule_title">Nome do relógio</string>
+    <string name="settings_rule_sum">Se o relógio não for detectado, digite o nome do recurso</string>
+    <string name="settings_rule_set">Configurar</string>
+    <string name="settings_rule_msg">Se o relógio da barra de estado não for detectado em outros dispositivos, digite o nome do recurso (ex. clock). Vazio = regras internas. Reinicie o SystemUI depois.</string>
+    <string name="settings_rule_apply">Aplicar</string>
+    <string name="settings_rule_reset">Redefinir</string>
+    <string name="settings_rule_applied">Regra salva. Reinicie o SystemUI.</string>
+    <string name="settings_rule_detect">Detectar automaticamente</string>
+    <string name="settings_rule_detecting">Detectando o relógio da barra de estado…</string>
+    <string name="settings_rule_detected">Detectado: %1$s</string>
+    <string name="settings_rule_detect_fail">Relógio não encontrado. Toque primeiro no relógio da barra de estado ou reinicie o SystemUI e tente novamente.</string>
+    <string name="settings_rule_current">Atual: %1$s</string>
+    <string name="settings_rule_builtin">interno</string>
+    <string name="settings_rule_detected_builtin">Relógio da barra de estado reconhecido. Regras internas ativas — não é necessária configuração adicional.</string>
+    <string name="settings_rule_detected_custom">Relógio da barra de estado reconhecido. Configuração salva. Reinicie o SystemUI para aplicar.</string>
+    <string name="settings_rule_dialog_desc">Não sabe? Toque em “Detectar automaticamente” abaixo e pronto. Você também pode digitar o nome do recurso do widget de hora (vazio = regras internas).</string>
+    <string name="settings_rule_or_manual">Ou digite manualmente o nome do recurso do widget de hora</string>
+    <string name="settings_rule_confirm_title">O nome pode ser inválido</string>
+    <string name="settings_rule_confirm_msg">“%1$s” não parece o nome de recurso de um widget de hora (geralmente contém clock ou time) e pode não funcionar. Tente “Detectar automaticamente” primeiro. Salvar mesmo assim?</string>
+    <string name="settings_rule_confirm_save">Salvar mesmo assim</string>
+    <string name="settings_launcher_title">Mostrar ícone no launcher</string>
+    <string name="settings_launcher_sum">Adiciona um atalho para as configurações na tela inicial; se desativado, abra pelo gerenciador do LSPosed</string>
+    <string name="settings_launcher_on">Ícone do launcher exibido</string>
+    <string name="settings_launcher_off">Ícone do launcher oculto</string>
+    <string name="launcher_label">Relógio</string>
+    <string name="settings_about_guide">Guia de uso</string>
+    <string name="settings_about_guide_sum">Como usar e perguntas frequentes</string>
+    <string name="settings_intro_title">Bem-vindo ao Clock Seconds</string>
+    <string name="settings_intro_msg">Obrigado por instalar o Clock Seconds!\n\n1. Ativar: no LSPosed, ative este módulo e marque «SystemUI», depois reinicie o SystemUI.\n2. Mostrar/ocultar segundos: toque no horário na barra de status (superior esquerda) para alternar. Se houver conflito com descer o painel de notificações, mude para toque duplo em «Gesto de alternar segundos».\n3. Cor da hora: tinga o algarismo das dezenas da hora com qualquer cor; ao desativar, restaura o padrão do sistema.\n4. Hora flutuante: pressione e segure o horário na barra de status para mostrar a hora da rede.\n5. As alterações são imediatas; caso contrário, reinicie o SystemUI ou o dispositivo.</string>
+    <string name="settings_intro_ok">Começar</string>
+
+    <!-- 小时颜色色块的无障碍朗读名（颜色名） -->
+    <string name="swatch_red">Vermelho</string>
+    <string name="swatch_orange">Laranja</string>
+    <string name="swatch_amber">Âmbar</string>
+    <string name="swatch_green">Verde</string>
+    <string name="swatch_cyan">Ciano</string>
+    <string name="swatch_blue">Azul</string>
+    <string name="swatch_purple">Roxo</string>
+    <string name="swatch_pink">Rosa</string>
+    <string name="swatch_white">Branco</string>
+    <string name="swatch_grey">Cinza</string>
+</resources>

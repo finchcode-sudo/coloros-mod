@@ -31,6 +31,15 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!-- 状态栏时钟显秒(ClockSeconds): 需用户通过 adb pm grant 授予, 或由 SystemUI 内代写 Secure。 -->
+    <uses-permission
+        android:name="android.permission.WRITE_SECURE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+    <permission
+        android:name="com.rikumi.colorosmod.permission.CONFIG"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="com.rikumi.colorosmod.permission.CONFIG" />
+
     <application
         android:directBootAware="true"
         android:allowBackup="true"
@@ -65,6 +74,37 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
+
+        <activity
+            android:name=".clockseconds.settings.ModuleSettingsActivity"
+            android:exported="true"
+            android:label="@string/module_name"
+            android:theme="@style/Theme.ColorOSClockSeconds" />
+
+        <activity-alias
+            android:name=".clockseconds.settings.LauncherAlias"
+            android:enabled="true"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:label="@string/launcher_label"
+            android:targetActivity=".clockseconds.settings.ModuleSettingsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <service
+            android:name=".clockseconds.tile.SecondsTileService"
+            android:exported="true"
+            android:icon="@drawable/ic_tile_seconds"
+            android:label="@string/tile_label"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
 
         <service
             android:name=".HomeControlsTileService"

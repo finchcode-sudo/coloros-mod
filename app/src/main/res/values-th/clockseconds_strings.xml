@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="module_name">เวลาแสดงวินาที</string>
+    <string name="module_description">แสดงวินาทีบนเวลาแถบสถานะ แตะเวลาเพื่อสลับการแสดงวินาที หลักสิบของชั่วโมงจะแสดงเป็นสีแดง</string>
+
+    <string name="settings_title">เวลาแสดงวินาที</string>
+    <string name="settings_status_title">สถานะปัจจุบัน</string>
+    <string name="settings_enabled">วินาที: เปิด</string>
+    <string name="settings_disabled">วินาที: ปิด</string>
+    <string name="settings_gesture_title">ท่าทางสลับการแสดงวินาที</string>
+    <string name="settings_gesture_click">แตะเวลา</string>
+    <string name="settings_gesture_long_press">กดเวลาค้าง</string>
+    <string name="settings_hint">หมายเหตุ: การตั้งค่ามีผลทันที หากไม่ทำงานให้รีสตาร์ท SystemUI หรืออุปกรณ์ หากการแตะขัดกับการดึงแถบแจ้งเตือน ให้ใช้การแตะสองครั้ง</string>
+    <string name="settings_refresh">รีเฟรชสถานะ</string>
+    <string name="settings_section_general">ทั่วไป</string>
+    <string name="settings_update_auto">ตรวจสอบอัปเดตอัตโนมัติ</string>
+    <string name="settings_update_auto_sum">ตรวจหาเวอร์ชันใหม่เมื่อเปิดแอป</string>
+    <string name="settings_update_check">ตรวจสอบอัปเดต</string>
+    <string name="settings_update_open">รับอัปเดต</string>
+    <string name="settings_update_open_sum">รับเวอร์ชันล่าสุดจาก GitHub</string>
+    <string name="settings_section_about">เกี่ยวกับโมดูล</string>
+    <string name="settings_about_version">เวอร์ชัน: %1$s (%2$d)</string>
+    <string name="settings_about_github">GitHub</string>
+    <string name="settings_about_github_sum">ดูซอร์สโค้ดบน GitHub</string>
+    <string name="settings_about_licenses">สิทธิ์การใช้งานโอเพนซอร์ส</string>
+    <string name="settings_about_licenses_sum">ไลบรารีโอเพนซอร์สของบุคคลที่สามที่ใช้</string>
+    <string name="update_checking">กำลังตรวจสอบอัปเดต…</string>
+    <string name="update_latest">คุณใช้เวอร์ชันล่าสุดอยู่แล้ว</string>
+    <string name="update_failed">ตรวจสอบอัปเดตล้มเหลว โปรดตรวจสอบเครือข่ายแล้วลองอีกครั้ง</string>
+    <string name="update_dialog_title">มีเวอร์ชันใหม่</string>
+    <string name="update_dialog_msg">พบเวอร์ชันใหม่ %1$s (ปัจจุบัน %2$s) ไปหน้าอัปเดตเลยไหม</string>
+    <string name="update_go">อัปเดต</string>
+    <string name="update_later">ภายหลัง</string>
+    <string name="licenses_text">Xposed API (de.robv.android.xposed:api:82): Apache License 2.0
+ซอร์สโค้ดของโมดูลนี้: MIT © kelebao</string>
+    <string name="settings_color_title">สีของชั่วโมง</string>
+    <string name="settings_color_hint">แตะสีเพื่อเปลี่ยน มีผลทันที</string>
+    <string name="settings_write_failed">เขียนไม่สำเร็จ โปรดตรวจสอบว่าโมดูลทำงานใน SystemUI แล้ว หรือให้สิทธิ์ WRITE_SECURE_SETTINGS ผ่าน adb</string>
+    <string name="settings_color_enable">เปิดใช้สีของชั่วโมง</string>
+    <string name="settings_color_enable_sum">ปิดเพื่อกลับไปใช้สไตล์เริ่มต้นของระบบ</string>
+    <string name="settings_gesture_hint">ใช้ท่าทางนี้บนเวลาแถบสถานะเพื่อเปิด/ปิดการแสดงวินาที</string>
+    <string name="settings_gesture_applied">เปลี่ยนเป็น %1$s แล้ว มีผลทันที หากไม่ทำงานให้รีสตาร์ท SystemUI</string>
+    <string name="settings_gesture_double_tap">แตะเวลาสองครั้ง</string>
+    <string name="settings_network_time">เวลาจากเครือข่าย %1$s (เครื่อง %2$s)</string>
+    <string name="settings_network_time_fail">ดึงเวลาจากเครือข่ายไม่สำเร็จ แตะเพื่อลองใหม่</string>
+    <string name="settings_sync_time">ซิงค์</string>
+    <string name="settings_sync_requested">เปิดตั้งเวลาอัตโนมัติแล้ว ระบบจะซิงค์ในไม่ช้า</string>
+    <string name="settings_preview_hint">เคล็ดลับ: แตะเวลาแถบสถานะ (มุมซ้ายบน) เพื่อแสดง/ซ่อนวินาที</string>
+    <string name="tile_label">แสดงวินาที</string>
+    <string name="settings_rule_title">ชื่อนาฬิกาแถบสถานะ</string>
+    <string name="settings_rule_sum">หากนาฬิกาไม่ถูกจับคู่โดยอัตโนมัติ ให้ป้อนชื่อทรัพยากร</string>
+    <string name="settings_rule_set">ตั้งค่า</string>
+    <string name="settings_rule_msg">หากนาฬิกาแถบสถานะไม่ถูกจับคู่โดยอัตโนมัติบนอุปกรณ์อื่น ให้ป้อนชื่อทรัพยากร (เช่น clock) หากว่างจะใช้กฎในตัว เริ่ม SystemUI ใหม่หลังเปลี่ยน</string>
+    <string name="settings_rule_apply">ใช้</string>
+    <string name="settings_rule_reset">รีเซ็ต</string>
+    <string name="settings_rule_applied">บันทึกกฎแล้ว เริ่ม SystemUI ใหม่เพื่อใช้</string>
+    <string name="settings_rule_detect">ตรวจหาอัตโนมัติ</string>
+    <string name="settings_rule_detecting">กำลังตรวจหานาฬิกาแถบสถานะ…</string>
+    <string name="settings_rule_detected">ตรวจพบ: %1$s</string>
+    <string name="settings_rule_detect_fail">ไม่พบนาฬิกา ลองแตะนาฬิกาแถบสถานะก่อน หรือเริ่ม SystemUI ใหม่แล้วลองอีกครั้ง</string>
+    <string name="settings_rule_current">ปัจจุบัน: %1$s</string>
+    <string name="settings_rule_builtin">ในตัว</string>
+    <string name="settings_rule_detected_builtin">ตรวจพบนาฬิกาแถบสถานะสำเร็จ ใช้กฎในตัว — ไม่ต้องตั้งค่าเพิ่ม</string>
+    <string name="settings_rule_detected_custom">ตรวจพบนาฬิกาแถบสถานะสำเร็จ บันทึกการตั้งค่าแล้ว เริ่ม SystemUI ใหม่เพื่อใช้งาน</string>
+    <string name="settings_rule_dialog_desc">ไม่แน่ใจ? แตะ “ตรวจหาอัตโนมัติ” ด้านล่างเพื่อเสร็จในแตะเดียว หรือจะป้อนชื่อทรัพยากรของวิดเจ็ตเวลาก็ได้ (ว่าง = กฎในตัว)</string>
+    <string name="settings_rule_or_manual">หรือป้อนชื่อทรัพยากรวิดเจ็ตเวลาด้วยตนเอง</string>
+    <string name="settings_rule_confirm_title">ชื่ออาจไม่ถูกต้อง</string>
+    <string name="settings_rule_confirm_msg">“%1$s” ไม่ดูเหมือนชื่อทรัพยากรวิดเจ็ตเวลา (มักมี clock หรือ time) และอาจไม่ทำงาน ลอง “ตรวจหาอัตโนมัติ” ก่อน ยังคงบันทึกหรือไม่?</string>
+    <string name="settings_rule_confirm_save">ยังคงบันทึก</string>
+    <string name="settings_launcher_title">แสดงไอคอนบนหน้าจอหลัก</string>
+    <string name="settings_launcher_sum">สร้างทางลัดการตั้งค่าบนหน้าจอหลัก ปิดแล้วยังเปิดได้จากตัวจัดการ LSPosed</string>
+    <string name="settings_launcher_on">แสดงไอคอนแล้ว</string>
+    <string name="settings_launcher_off">ซ่อนไอคอนแล้ว</string>
+    <string name="launcher_label">นาฬิกา</string>
+    <string name="settings_about_guide">คู่มือการใช้งาน</string>
+    <string name="settings_about_guide_sum">วิธีใช้และคำถามที่พบบ่อย</string>
+    <string name="settings_intro_title">ยินดีต้อนรับสู่ Clock Seconds</string>
+    <string name="settings_intro_msg">ขอบคุณที่ติดตั้ง Clock Seconds!\n\n1. เปิดใช้งาน: ใน LSPosed ให้เปิดโมดูลนี้และทำเครื่องหมาย «SystemUI» แล้วรีสตาร์ท SystemUI\n2. แสดง/ซ่อนวินาที: แตะเวลาในแถบสถานะ (มุมซ้ายบน) เพื่อสลับ หากขัดแย้งกับการดึงแผงการแจ้งเตือน ให้เปลี่ยนเป็นแตะสองครั้งใน «ท่าทางสลับวินาที»\n3. สีชั่วโมง: ระบายสีหลักสิบของชั่วโมงด้วยสีใดก็ได้ ปิดแล้วจะคืนค่ามาตรฐานของระบบ\n4. เวลาลอย: กดค้างเวลาในแถบสถานะเพื่อแสดงเวลาเครือข่าย\n5. การเปลี่ยนมีผลทันที หากไม่ ให้รีสตาร์ท SystemUI หรืออุปกรณ์</string>
+    <string name="settings_intro_ok">เริ่มต้น</string>
+
+    <!-- 小时颜色色块的无障碍朗读名（颜色名） -->
+    <string name="swatch_red">แดง</string>
+    <string name="swatch_orange">ส้ม</string>
+    <string name="swatch_amber">อำพัน</string>
+    <string name="swatch_green">เขียว</string>
+    <string name="swatch_cyan">ไซยาน</string>
+    <string name="swatch_blue">น้ำเงิน</string>
+    <string name="swatch_purple">ม่วง</string>
+    <string name="swatch_pink">ชมพู</string>
+    <string name="swatch_white">ขาว</string>
+    <string name="swatch_grey">เทา</string>
+</resources>

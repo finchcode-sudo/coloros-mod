@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="module_name">Zegar z sekundami</string>
+    <string name="module_description">Pokazuje sekundy w czasie paska statusu. Dotknij czasu, aby włączyć/wyłączyć sekundy; dziesiątki godziny są kolorowane na czerwono.</string>
+
+    <string name="settings_title">Zegar z sekundami</string>
+    <string name="settings_status_title">Aktualny stan</string>
+    <string name="settings_enabled">Sekundy: włączone</string>
+    <string name="settings_disabled">Sekundy: wyłączone</string>
+    <string name="settings_gesture_title">Gest przełączania sekund</string>
+    <string name="settings_gesture_click">Dotknij czasu</string>
+    <string name="settings_gesture_long_press">Przytrzymaj czas</string>
+    <string name="settings_hint">Uwaga: ustawienia działają od razu. Jeśli nie, uruchom ponownie SystemUI lub urządzenie. Jeśli dotyk koliduje z otwieraniem panelu, użyj podwójnego dotknięcia.</string>
+    <string name="settings_refresh">Odśwież stan</string>
+    <string name="settings_section_general">Ogólne</string>
+    <string name="settings_update_auto">Automatycznie sprawdzaj aktualizacje</string>
+    <string name="settings_update_auto_sum">Sprawdzaj nowe wersje przy uruchomieniu aplikacji</string>
+    <string name="settings_update_check">Sprawdź aktualizacje</string>
+    <string name="settings_update_open">Pobierz aktualizację</string>
+    <string name="settings_update_open_sum">Pobierz najnowszą wersję z GitHuba</string>
+    <string name="settings_section_about">Informacje o module</string>
+    <string name="settings_about_version">Wersja: %1$s (%2$d)</string>
+    <string name="settings_about_github">GitHub</string>
+    <string name="settings_about_github_sum">Zobacz kod źródłowy na GitHubie</string>
+    <string name="settings_about_licenses">Licencje open source</string>
+    <string name="settings_about_licenses_sum">Używane biblioteki open source</string>
+    <string name="update_checking">Sprawdzanie aktualizacji…</string>
+    <string name="update_latest">Masz najnowszą wersję</string>
+    <string name="update_failed">Nie udało się sprawdzić aktualizacji. Sprawdź sieć i spróbuj ponownie</string>
+    <string name="update_dialog_title">Dostępna nowa wersja</string>
+    <string name="update_dialog_msg">Znaleziono nową wersję %1$s (bieżąca: %2$s). Przejść do strony aktualizacji?</string>
+    <string name="update_go">Aktualizuj</string>
+    <string name="update_later">Później</string>
+    <string name="licenses_text">Xposed API (de.robv.android.xposed:api:82): Apache License 2.0
+Kod źródłowy tego modułu: MIT © kelebao</string>
+    <string name="settings_color_title">Kolor godziny</string>
+    <string name="settings_color_hint">Dotknij koloru, aby zmienić — działa od razu</string>
+    <string name="settings_write_failed">Zapis nie powiódł się. Sprawdź, czy moduł działa w SystemUI, lub przyznaj WRITE_SECURE_SETTINGS przez adb</string>
+    <string name="settings_color_enable">Włącz kolor godziny</string>
+    <string name="settings_color_enable_sum">Wyłączenie przywraca domyślny wygląd systemu</string>
+    <string name="settings_gesture_hint">Użyj tego gestu na czasie paska stanu, aby włączyć lub wyłączyć sekundy</string>
+    <string name="settings_gesture_applied">Przełączono na %1$s — działa od razu. Jeśli nie, uruchom ponownie SystemUI</string>
+    <string name="settings_gesture_double_tap">Podwójne dotknięcie czasu</string>
+    <string name="settings_network_time">Czas sieci %1$s (lokalny %2$s)</string>
+    <string name="settings_network_time_fail">Nie udało się pobrać czasu sieci — dotknij, aby ponowić</string>
+    <string name="settings_sync_time">Synchronizuj</string>
+    <string name="settings_sync_requested">Automatyczny czas włączony — wkrótce się zsynchronizuje</string>
+    <string name="settings_preview_hint">Wskazówka: dotknij czasu na pasku stanu (lewy górny róg), aby pokazać/ukryć sekundy</string>
+    <string name="tile_label">Pokaż sekundy</string>
+    <string name="settings_rule_title">Nazwa zegara</string>
+    <string name="settings_rule_sum">Jeśli zegar nie jest wykrywany, wpisz nazwę zasobu</string>
+    <string name="settings_rule_set">Ustaw</string>
+    <string name="settings_rule_msg">Jeśli zegar na pasku stanu nie jest wykrywany na innych urządzeniach, wpisz nazwę zasobu (np. clock). Puste = reguły wbudowane. Po zmianie zrestartuj SystemUI.</string>
+    <string name="settings_rule_apply">Zastosuj</string>
+    <string name="settings_rule_reset">Zresetuj</string>
+    <string name="settings_rule_applied">Reguła zapisana. Zrestartuj SystemUI.</string>
+    <string name="settings_rule_detect">Wykryj automatycznie</string>
+    <string name="settings_rule_detecting">Wykrywanie zegara na pasku stanu…</string>
+    <string name="settings_rule_detected">Wykryto: %1$s</string>
+    <string name="settings_rule_detect_fail">Nie znaleziono zegara. Najpierw dotknij zegara na pasku stanu lub zrestartuj SystemUI i spróbuj ponownie.</string>
+    <string name="settings_rule_current">Obecny: %1$s</string>
+    <string name="settings_rule_builtin">wbudowane</string>
+    <string name="settings_rule_detected_builtin">Rozpoznano zegar na pasku stanu. Reguły wbudowane aktywne — nie wymaga dodatkowej konfiguracji.</string>
+    <string name="settings_rule_detected_custom">Rozpoznano zegar na pasku stanu. Konfiguracja zapisana. Zrestartuj SystemUI, aby zastosować.</string>
+    <string name="settings_rule_dialog_desc">Nie wiesz? Dotknij „Wykryj automatycznie” poniżej i gotowe. Możesz też wpisać nazwę zasobu widżetu czasu (puste = reguły wbudowane).</string>
+    <string name="settings_rule_or_manual">Lub wpisz ręcznie nazwę zasobu widżetu czasu</string>
+    <string name="settings_rule_confirm_title">Nazwa może być nieprawidłowa</string>
+    <string name="settings_rule_confirm_msg">„%1$s” nie wygląda na nazwę zasobu widżetu czasu (zwykle zawiera clock lub time) i może nie działać. Najpierw spróbuj „Wykryj automatycznie”. Mimo to zapisać?</string>
+    <string name="settings_rule_confirm_save">Mimo to zapisz</string>
+    <string name="settings_launcher_title">Pokaż ikonę w launcherze</string>
+    <string name="settings_launcher_sum">Dodaj skrót do ustawień na ekranie głównym; gdy wyłączone, otwieraj z menedżera LSPosed</string>
+    <string name="settings_launcher_on">Ikona w launcherze pokazana</string>
+    <string name="settings_launcher_off">Ikona w launcherze ukryta</string>
+    <string name="launcher_label">Zegar</string>
+    <string name="settings_about_guide">Przewodnik</string>
+    <string name="settings_about_guide_sum">Jak używać i FAQ</string>
+    <string name="settings_intro_title">Witaj w Clock Seconds</string>
+    <string name="settings_intro_msg">Dziękujemy za zainstalowanie Clock Seconds!\n\n1. Aktywacja: w LSPosed włącz ten moduł i zaznacz «SystemUI», a następnie zrestartuj SystemUI.\n2. Pokaż/ukryj sekundy: dotknij godziny na pasku stanu (lewy górny róg), aby przełączyć. Jeśli koliduje to z opuszczaniem panelu powiadomień, zmień na podwójne dotknięcie w „Gescie przełączania sekund”.\n3. Kolor godziny: pokoloruj cyfrę dziesiątek godziny dowolnym kolorem; po wyłączeniu przywraca domyślne ustawienie systemu.\n4. Zwijana godzina: przytrzymaj godzinę na pasku stanu, aby pokazać czas sieciowy.\n5. Zmiany są natychmiastowe; w przeciwnym razie zrestartuj SystemUI lub urządzenie.</string>
+    <string name="settings_intro_ok">Zacznij</string>
+
+    <!-- 小时颜色色块的无障碍朗读名（颜色名） -->
+    <string name="swatch_red">Czerwony</string>
+    <string name="swatch_orange">Pomarańczowy</string>
+    <string name="swatch_amber">Bursztynowy</string>
+    <string name="swatch_green">Zielony</string>
+    <string name="swatch_cyan">Cyjan</string>
+    <string name="swatch_blue">Niebieski</string>
+    <string name="swatch_purple">Purpurowy</string>
+    <string name="swatch_pink">Różowy</string>
+    <string name="swatch_white">Biały</string>
+    <string name="swatch_grey">Szary</string>
+</resources>

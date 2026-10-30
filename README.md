@@ -107,6 +107,7 @@ AI 产生的代码可能无法完全符合开发者预期，请在使用前自�
 - 状态栏字体
 - 状态栏字体字重
 - 状态栏歌词
+- 状态栏时钟显秒（含小时十位数着色、点击/长按切换、下拉磁贴，移植自 ClockSeconds；需 `pm grant com.rikumi.colorosmod android.permission.WRITE_SECURE_SETTINGS`，设置入口为桌面图标「时间」）
 - 流体云歌词（试验性）
 - 避让第三方状态栏歌词
 - 流体云出现时不隐藏电量百分比

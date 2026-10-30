@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="module_name">Saat Saniye Gösterme</string>
+    <string name="module_description">Durum çubuğu zamanında saniyeleri gösterir. Zamana dokunarak saniye gösterimini açıp kapatabilirsiniz; zamanın onlar basamağı kırmızı renkte görünür.</string>
+
+    <string name="settings_title">Saat Saniye Gösterme</string>
+    <string name="settings_status_title">Mevcut durum</string>
+    <string name="settings_enabled">Saniye: Açık</string>
+    <string name="settings_disabled">Saniye: Kapalı</string>
+    <string name="settings_gesture_title">Saniye değiştirme hareketi</string>
+    <string name="settings_gesture_click">Saate dokun</string>
+    <string name="settings_gesture_long_press">Saati basılı tut</string>
+    <string name="settings_hint">Not: ayarlar hemen geçerli olur. Geçerli olmazsa SystemUI\'yi veya cihazı yeniden başlatın. Dokunma bildirim panelini açmayla çakışıyorsa çift dokunuşu kullanın.</string>
+    <string name="settings_refresh">Durumu yenile</string>
+    <string name="settings_section_general">Genel</string>
+    <string name="settings_update_auto">Güncellemeleri otomatik denetle</string>
+    <string name="settings_update_auto_sum">Uygulama açıldığında yeni sürümleri denetle</string>
+    <string name="settings_update_check">Güncellemeleri denetle</string>
+    <string name="settings_update_open">Güncellemeyi al</string>
+    <string name="settings_update_open_sum">GitHub\'dan en son sürümü al</string>
+    <string name="settings_section_about">Modül hakkında</string>
+    <string name="settings_about_version">Sürüm: %1$s (%2$d)</string>
+    <string name="settings_about_github">GitHub</string>
+    <string name="settings_about_github_sum">Kaynak kodunu GitHub\'da gör</string>
+    <string name="settings_about_licenses">Açık kaynak lisansları</string>
+    <string name="settings_about_licenses_sum">Kullanılan üçüncü taraf açık kaynak kütüphaneleri</string>
+    <string name="update_checking">Güncellemeler denetleniyor…</string>
+    <string name="update_latest">En son sürümü kullanıyorsunuz</string>
+    <string name="update_failed">Güncelleme denetlenemedi. Ağ bağlantınızı kontrol edip tekrar deneyin</string>
+    <string name="update_dialog_title">Yeni sürüm var</string>
+    <string name="update_dialog_msg">Yeni sürüm %1$s bulundu (mevcut: %2$s). Güncelleme sayfasına gidilsin mi?</string>
+    <string name="update_go">Güncelle</string>
+    <string name="update_later">Sonra</string>
+    <string name="licenses_text">Xposed API (de.robv.android.xposed:api:82): Apache License 2.0
+Bu modülün kaynak kodu: MIT © kelebao</string>
+    <string name="settings_color_title">Saat rengi</string>
+    <string name="settings_color_hint">Değiştirmek için bir renge dokunun — hemen uygulanır</string>
+    <string name="settings_write_failed">Yazma başarısız. Modülün SystemUI\'de etkin olduğundan emin olun veya adb ile WRITE_SECURE_SETTINGS verin</string>
+    <string name="settings_color_enable">Saat rengini etkinleştir</string>
+    <string name="settings_color_enable_sum">Kapatınca sistem varsayılan görünümüne döner</string>
+    <string name="settings_gesture_hint">Saniyeleri açıp kapatmak için durum çubuğu zamanında bu hareketi kullanın</string>
+    <string name="settings_gesture_applied">%1$s olarak değiştirildi — hemen geçerli olur. Geçerli olmazsa SystemUI\'yi yeniden başlatın</string>
+    <string name="settings_gesture_double_tap">Saate çift dokun</string>
+    <string name="settings_network_time">Ağ zamanı %1$s (yerel %2$s)</string>
+    <string name="settings_network_time_fail">Ağ zamanı alınamadı — yeniden denemek için dokunun</string>
+    <string name="settings_sync_time">Eşitle</string>
+    <string name="settings_sync_requested">Otomatik zaman açıldı — kısa süre içinde eşitlenir</string>
+    <string name="settings_preview_hint">İpucu: saniyeleri göstermek/gizlemek için durum çubuğu zamanına (sol üst) dokunun</string>
+    <string name="tile_label">Saniye Göster</string>
+    <string name="settings_rule_title">Durum çubuğu saat adı</string>
+    <string name="settings_rule_sum">Saat diğer cihazlarda algılanmazsa kaynak adını girin</string>
+    <string name="settings_rule_set">Ayarla</string>
+    <string name="settings_rule_msg">Saat diğer cihazlarda otomatik algılanmazsa kaynak adını (ör. clock) girin. Boş bırakırsanız yerleşik kurallar kullanılır. Değiştikten sonra SystemUI\'yi yeniden başlatın.</string>
+    <string name="settings_rule_apply">Uygula</string>
+    <string name="settings_rule_reset">Sıfırla</string>
+    <string name="settings_rule_applied">Kural kaydedildi. Uygulamak için SystemUI\'yi yeniden başlatın.</string>
+    <string name="settings_rule_detect">Otomatik algıla</string>
+    <string name="settings_rule_detecting">Durum çubuğu saati algılanıyor…</string>
+    <string name="settings_rule_detected">Algılandı: %1$s</string>
+    <string name="settings_rule_detect_fail">Saat bulunamadı. Önce durum çubuğu saatine dokunun veya SystemUI\'yi yeniden başlatıp tekrar deneyin.</string>
+    <string name="settings_rule_current">Şu anki: %1$s</string>
+    <string name="settings_rule_builtin">yerleşik</string>
+    <string name="settings_rule_detected_builtin">Durum çubuğu saati tanındı. Yerleşik kurallar aktif — ek kurulum gerekmez.</string>
+    <string name="settings_rule_detected_custom">Durum çubuğu saati tanındı. Yapılandırma kaydedildi. Uygulamak için SystemUI\'yi yeniden başlatın.</string>
+    <string name="settings_rule_dialog_desc">Bilemiyor musunuz? Aşağıdaki “Otomatik algıla” ile tek dokunuşta tamamlayın. Saat bileşeninin kaynak adını elle de girebilirsiniz (boş = yerleşik kurallar).</string>
+    <string name="settings_rule_or_manual">Veya saat bileşeninin kaynak adını elle girin</string>
+    <string name="settings_rule_confirm_title">Ad geçersiz olabilir</string>
+    <string name="settings_rule_confirm_msg">“%1$s” bir saat bileşeni kaynak adına benzemiyor (genellikle clock veya time içerir) ve çalışmayabilir. Önce “Otomatik algıla”yı deneyin. Yine de kaydedilsin mi?</string>
+    <string name="settings_rule_confirm_save">Yine de kaydet</string>
+    <string name="settings_launcher_title">Başlatıcı simgesini göster</string>
+    <string name="settings_launcher_sum">Ana ekrana ayarlar kısayolu ekle; kapalıyken LSPosed yöneticisinden açılır</string>
+    <string name="settings_launcher_on">Başlatıcı simgesi gösterildi</string>
+    <string name="settings_launcher_off">Başlatıcı simgesi gizlendi</string>
+    <string name="launcher_label">Saat</string>
+    <string name="settings_about_guide">Kullanım kılavuzu</string>
+    <string name="settings_about_guide_sum">Nasıl kullanılır ve SSS</string>
+    <string name="settings_intro_title">Clock Seconds\'a hoş geldiniz</string>
+    <string name="settings_intro_msg">Clock Seconds\'ı yüklediğiniz için teşekkürler!\n\n1. Etkinleştirme: LSPosed\'da bu modülü etkinleştirin ve «SystemUI» kutusunu işaretleyin, ardından SystemUI\'ı yeniden başlatın.\n2. Saniyeleri göster/gizle: Durum çubuğundaki saate (sol üst) dokunarak değiştirin. Bu, bildirim panelini aşağı çekmeyle çakışıyorsa, «Saniye geçiş hareketi»nde çift dokunmaya geçin.\n3. Saat rengi: Saatin onlar basamağı rakamını istediğiniz renge boyayın; kapatınca sistem varsayılanına döner.\n4. Yüzen saat: Durum çubuğundaki saate uzun basınca ağ saatini gösterir.\n5. Değişiklikler anındadır; değilse SystemUI\'ı veya cihazı yeniden başlatın.</string>
+    <string name="settings_intro_ok">Başla</string>
+
+    <!-- 小时颜色色块的无障碍朗读名（颜色名） -->
+    <string name="swatch_red">Kırmızı</string>
+    <string name="swatch_orange">Turuncu</string>
+    <string name="swatch_amber">Kehribar</string>
+    <string name="swatch_green">Yeşil</string>
+    <string name="swatch_cyan">Camgöbeği</string>
+    <string name="swatch_blue">Mavi</string>
+    <string name="swatch_purple">Mor</string>
+    <string name="swatch_pink">Pembe</string>
+    <string name="swatch_white">Beyaz</string>
+    <string name="swatch_grey">Gri</string>
+</resources>

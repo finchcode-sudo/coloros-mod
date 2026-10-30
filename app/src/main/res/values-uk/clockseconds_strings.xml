@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="module_name">Секунди в часі</string>
+    <string name="module_description">Показує секунди в часі рядка стану. Торкніться часу, щоб перемкнути відображення секунд; десятки години будуть червоними.</string>
+
+    <string name="settings_title">Секунди в часі</string>
+    <string name="settings_status_title">Поточний стан</string>
+    <string name="settings_enabled">Секунди: увімкнено</string>
+    <string name="settings_disabled">Секунди: вимкнено</string>
+    <string name="settings_gesture_title">Жест перемикання секунд</string>
+    <string name="settings_gesture_click">Торкнутися часу</string>
+    <string name="settings_gesture_long_press">Утримувати час</string>
+    <string name="settings_hint">Примітка: налаштування застосовуються одразу. Якщо не працює, перезапустіть SystemUI або пристрій. Якщо торкання заважає відкриттю панелі, використовуйте подвійне натискання.</string>
+    <string name="settings_refresh">Оновити стан</string>
+    <string name="settings_section_general">Загальне</string>
+    <string name="settings_update_auto">Автоперевірка оновлень</string>
+    <string name="settings_update_auto_sum">Перевіряти нові версії під час запуску застосунку</string>
+    <string name="settings_update_check">Перевірити оновлення</string>
+    <string name="settings_update_open">Отримати оновлення</string>
+    <string name="settings_update_open_sum">Отримати останню версію з GitHub</string>
+    <string name="settings_section_about">Про модуль</string>
+    <string name="settings_about_version">Версія: %1$s (%2$d)</string>
+    <string name="settings_about_github">GitHub</string>
+    <string name="settings_about_github_sum">Вихідний код на GitHub</string>
+    <string name="settings_about_licenses">Відкриті ліцензії</string>
+    <string name="settings_about_licenses_sum">Сторонні бібліотеки з відкритим кодом, що використовуються</string>
+    <string name="update_checking">Перевірка оновлень…</string>
+    <string name="update_latest">У вас уже найновіша версія</string>
+    <string name="update_failed">Не вдалося перевірити оновлення. Перевірте мережу та спробуйте ще раз</string>
+    <string name="update_dialog_title">Доступна нова версія</string>
+    <string name="update_dialog_msg">Знайдено нову версію %1$s (поточна: %2$s). Перейти на сторінку оновлення?</string>
+    <string name="update_go">Оновити</string>
+    <string name="update_later">Пізніше</string>
+    <string name="licenses_text">Xposed API (de.robv.android.xposed:api:82): Apache License 2.0
+Вихідний код цього модуля: MIT © kelebao</string>
+    <string name="settings_color_title">Колір часу</string>
+    <string name="settings_color_hint">Торкніться кольору, щоб змінити — застосовується одразу</string>
+    <string name="settings_write_failed">Не вдалося записати. Переконайтеся, що модуль активний у SystemUI, або надайте WRITE_SECURE_SETTINGS через adb</string>
+    <string name="settings_color_enable">Увімкнути колір часу</string>
+    <string name="settings_color_enable_sum">Вимкнення поверне стандартний вигляд системи</string>
+    <string name="settings_gesture_hint">Використовуйте цей жест на часі в рядку стану, щоб увімкнути або вимкнути секунди</string>
+    <string name="settings_gesture_applied">Перемкнено на «%1$s» — застосовується одразу. Якщо не працює, перезапустіть SystemUI</string>
+    <string name="settings_gesture_double_tap">Подвійне натискання на час</string>
+    <string name="settings_network_time">Мережевий час %1$s (локальний %2$s)</string>
+    <string name="settings_network_time_fail">Не вдалося отримати мережевий час — торкніться для повтору</string>
+    <string name="settings_sync_time">Синхр.</string>
+    <string name="settings_sync_requested">Авточас увімкнено — синхронізація скоро відбудеться</string>
+    <string name="settings_preview_hint">Підказка: торкніться часу в рядку стану (зверху зліва), щоб показати/сховати секунди</string>
+    <string name="tile_label">Показувати секунди</string>
+    <string name="settings_rule_title">Назва годинника</string>
+    <string name="settings_rule_sum">Якщо годинник не визначається, введіть ім\'я ресурсу</string>
+    <string name="settings_rule_set">Налаштувати</string>
+    <string name="settings_rule_msg">Якщо годинник у смужці стану не визначається на іншому пристрої, введіть ім\'я ресурсу (напр. clock). Порожньо — вбудовані правила. Після зміни перезапустіть SystemUI.</string>
+    <string name="settings_rule_apply">Застосувати</string>
+    <string name="settings_rule_reset">Скинути</string>
+    <string name="settings_rule_applied">Правило збережено. Перезапустіть SystemUI.</string>
+    <string name="settings_rule_detect">Автовизначення</string>
+    <string name="settings_rule_detecting">Визначення годинника у смужці стану…</string>
+    <string name="settings_rule_detected">Визначено: %1$s</string>
+    <string name="settings_rule_detect_fail">Годинник не знайдено. Спочатку торкніться годинника у смужці стану або перезапустіть SystemUI і спробуйте знову.</string>
+    <string name="settings_rule_current">Поточний: %1$s</string>
+    <string name="settings_rule_builtin">вбудовані</string>
+    <string name="settings_rule_detected_builtin">Годинник у смужці стану розпізнано. Вбудовані правила активні — додаткове налаштування не потрібне.</string>
+    <string name="settings_rule_detected_custom">Годинник у смужці стану розпізнано. Налаштування збережено. Перезапустіть SystemUI для застосування.</string>
+    <string name="settings_rule_dialog_desc">Не знаєте? Натисніть «Автовизначення» нижче — готово одним дотиком. Можна також ввести ім’я ресурсу віджета часу (порожньо = вбудовані правила).</string>
+    <string name="settings_rule_or_manual">Або введіть ім’я ресурсу віджета часу вручну</string>
+    <string name="settings_rule_confirm_title">Ім’я може бути недійсним</string>
+    <string name="settings_rule_confirm_msg">«%1$s» не схоже на ім’я ресурсу віджета часу (зазвичай містить clock або time) і може не працювати. Спочатку спробуйте «Автовизначення». Все одно зберегти?</string>
+    <string name="settings_rule_confirm_save">Все одно зберегти</string>
+    <string name="settings_launcher_title">Показувати значок у лаунчері</string>
+    <string name="settings_launcher_sum">Додати ярлик налаштувань на головний екран; якщо вимкнено, відкривайте з менеджера LSPosed</string>
+    <string name="settings_launcher_on">Значок у лаунчері показано</string>
+    <string name="settings_launcher_off">Значок у лаунчері приховано</string>
+    <string name="launcher_label">Годинник</string>
+    <string name="settings_about_guide">Посібник</string>
+    <string name="settings_about_guide_sum">Як користуватися і FAQ</string>
+    <string name="settings_intro_title">Ласкаво просимо до Clock Seconds</string>
+    <string name="settings_intro_msg">Дякуємо за встановлення Clock Seconds!\n\n1. Активація: у LSPosed увімкніть цей модуль і позначте «SystemUI», потім перезапустіть SystemUI.\n2. Показати/сховати секунди: торкніться часу в рядку стану (зверху ліворуч), щоб перемкнути. Якщо це конфліктує з опусканням панелі сповіщень, перейдіть на подвійне торкання в «Жест перемикання секунд».\n3. Колір години: зафарбуйте цифру десятків години будь-яким кольором; вимкнувши, повертається системне значення за замовчуванням.\n4. Плаваючий час: довго натискайте час у рядку стану, щоб показати мережевий час.\n5. Зміни застосовуються миттєво; якщо ні — перезапустіть SystemUI або пристрій.</string>
+    <string name="settings_intro_ok">Почати</string>
+
+    <!-- 小时颜色色块的无障碍朗读名（颜色名） -->
+    <string name="swatch_red">Червоний</string>
+    <string name="swatch_orange">Помаранчевивий</string>
+    <string name="swatch_amber">Бурштин</string>
+    <string name="swatch_green">Зелений</string>
+    <string name="swatch_cyan">Блакитний</string>
+    <string name="swatch_blue">Синій</string>
+    <string name="swatch_purple">Фіолетовий</string>
+    <string name="swatch_pink">Рожевий</string>
+    <string name="swatch_white">Білий</string>
+    <string name="swatch_grey">Сірий</string>
+</resources>

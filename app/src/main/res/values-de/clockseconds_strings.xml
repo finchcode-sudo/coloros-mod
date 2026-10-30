@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="module_name">Zeit mit Sekunden</string>
+    <string name="module_description">Zeigt Sekunden in der Statusleistenzeit an. Tippe auf die Zeit, um die Sekundenanzeige umzuschalten; die Zehnerstelle der Stunde wird rot gefärbt.</string>
+
+    <string name="settings_title">Zeit mit Sekunden</string>
+    <string name="settings_status_title">Aktueller Status</string>
+    <string name="settings_enabled">Sekunden: Ein</string>
+    <string name="settings_disabled">Sekunden: Aus</string>
+    <string name="settings_gesture_title">Geste zum Umschalten der Sekunden</string>
+    <string name="settings_gesture_click">Zeit antippen</string>
+    <string name="settings_gesture_long_press">Zeit gedrückt halten</string>
+    <string name="settings_hint">Hinweis: Änderungen wirken sofort. Falls nicht, starte SystemUI oder das Gerät neu. Wenn Tippen mit dem Herunterziehen der Benachrichtigungen kollidiert, nutze doppeltes Tippen.</string>
+    <string name="settings_refresh">Status aktualisieren</string>
+    <string name="settings_section_general">Allgemein</string>
+    <string name="settings_update_auto">Automatisch nach Updates suchen</string>
+    <string name="settings_update_auto_sum">Beim Öffnen der App nach neuen Versionen suchen</string>
+    <string name="settings_update_check">Nach Updates suchen</string>
+    <string name="settings_update_open">Update holen</string>
+    <string name="settings_update_open_sum">Neueste Version von GitHub holen</string>
+    <string name="settings_section_about">Über das Modul</string>
+    <string name="settings_about_version">Version: %1$s (%2$d)</string>
+    <string name="settings_about_github">GitHub</string>
+    <string name="settings_about_github_sum">Quellcode auf GitHub ansehen</string>
+    <string name="settings_about_licenses">Open-Source-Lizenzen</string>
+    <string name="settings_about_licenses_sum">Verwendete Drittanbieter-Bibliotheken</string>
+    <string name="update_checking">Suche nach Updates…</string>
+    <string name="update_latest">Du hast die neueste Version</string>
+    <string name="update_failed">Update-Suche fehlgeschlagen. Prüfe deine Verbindung und versuche es erneut</string>
+    <string name="update_dialog_title">Neue Version verfügbar</string>
+    <string name="update_dialog_msg">Neue Version %1$s gefunden (aktuell: %2$s). Zur Update-Seite wechseln?</string>
+    <string name="update_go">Aktualisieren</string>
+    <string name="update_later">Später</string>
+    <string name="licenses_text">Xposed API (de.robv.android.xposed:api:82): Apache License 2.0
+Quellcode dieses Moduls: MIT © kelebao</string>
+    <string name="settings_color_title">Stundenfarbe</string>
+    <string name="settings_color_hint">Tippe auf eine Farbe — sofort wirksam</string>
+    <string name="settings_write_failed">Schreiben fehlgeschlagen. Prüfe, ob das Modul in SystemUI aktiv ist, oder erteile WRITE_SECURE_SETTINGS per adb</string>
+    <string name="settings_color_enable">Stundenfarbe aktivieren</string>
+    <string name="settings_color_enable_sum">Ausschalten stellt die Systemdarstellung wieder her</string>
+    <string name="settings_gesture_hint">Mit dieser Geste auf der Statusleisten-Zeit schaltest du die Sekunden um</string>
+    <string name="settings_gesture_applied">Auf %1$s umgestellt — sofort wirksam. Falls nicht, starte SystemUI neu</string>
+    <string name="settings_gesture_double_tap">Doppeltippen auf die Zeit</string>
+    <string name="settings_network_time">Netzwerkzeit %1$s (lokal %2$s)</string>
+    <string name="settings_network_time_fail">Netzwerkzeit nicht verfügbar — zum Wiederholen tippen</string>
+    <string name="settings_sync_time">Sync</string>
+    <string name="settings_sync_requested">Automatische Zeit aktiviert — wird gleich abgeglichen</string>
+    <string name="settings_preview_hint">Tipp: Tippe auf die Statusleistenuhr (oben links), um Sekunden ein-/auszublenden</string>
+    <string name="tile_label">Sekunden anzeigen</string>
+    <string name="settings_rule_title">Statusleisten-Uhrname</string>
+    <string name="settings_rule_sum">Falls die Uhr auf anderen Geräten nicht erkannt wird, Ressourcennamen eingeben</string>
+    <string name="settings_rule_set">Einstellen</string>
+    <string name="settings_rule_msg">Wird die Uhr auf anderen Geräten nicht erkannt, gib den Ressourcennamen (z. B. clock) ein. Leer = eingebaute Regeln. Danach SystemUI neu starten.</string>
+    <string name="settings_rule_apply">Anwenden</string>
+    <string name="settings_rule_reset">Zurücksetzen</string>
+    <string name="settings_rule_applied">Regel gespeichert. SystemUI neu starten.</string>
+    <string name="settings_rule_detect">Automatisch erkennen</string>
+    <string name="settings_rule_detecting">Statusleisten-Uhr wird erkannt…</string>
+    <string name="settings_rule_detected">Erkannt: %1$s</string>
+    <string name="settings_rule_detect_fail">Keine Uhr gefunden. Tippe zuerst auf die Uhr in der Statusleiste oder starte SystemUI neu und versuche es erneut.</string>
+    <string name="settings_rule_current">Aktuell: %1$s</string>
+    <string name="settings_rule_builtin">eingebaut</string>
+    <string name="settings_rule_detected_builtin">Statusleisten-Uhr erkannt. Eingebaute Regeln aktiv — keine zusätzliche Einrichtung nötig.</string>
+    <string name="settings_rule_detected_custom">Statusleisten-Uhr erkannt. Konfiguration gespeichert. SystemUI neu starten, um anzuwenden.</string>
+    <string name="settings_rule_dialog_desc">Unsicher? Tippe unten auf „Automatisch erkennen“ — in einem Tipp erledigt. Du kannst auch den Ressourcennamen des Zeit-Widgets eingeben (leer = eingebaute Regeln).</string>
+    <string name="settings_rule_or_manual">Oder Ressourcennamen des Zeit-Widgets manuell eingeben</string>
+    <string name="settings_rule_confirm_title">Name möglicherweise ungültig</string>
+    <string name="settings_rule_confirm_msg">„%1$s“ sieht nicht wie der Ressourcenname eines Zeit-Widgets aus (enthält meist clock oder time) und funktioniert evtl. nicht. Versuche zuerst „Automatisch erkennen“. Trotzdem speichern?</string>
+    <string name="settings_rule_confirm_save">Trotzdem speichern</string>
+    <string name="settings_launcher_title">Symbol im Launcher anzeigen</string>
+    <string name="settings_launcher_sum">Verknüpfung zu den Einstellungen auf dem Startbildschirm anlegen; wenn aus, über den LSPosed-Manager öffnen</string>
+    <string name="settings_launcher_on">Launcher-Symbol eingeblendet</string>
+    <string name="settings_launcher_off">Launcher-Symbol ausgeblendet</string>
+    <string name="launcher_label">Uhr</string>
+    <string name="settings_about_guide">Anleitung</string>
+    <string name="settings_about_guide_sum">Anleitung und FAQ</string>
+    <string name="settings_intro_title">Willkommen bei Clock Seconds</string>
+    <string name="settings_intro_msg">Danke für die Installation von Clock Seconds!\n\n1. Aktivieren: Aktiviere in LSPosed dieses Modul und setze den Haken bei „SystemUI“, dann starte SystemUI neu.\n2. Sekunden ein/ausblenden: Tippe auf die Uhrzeit in der Statusleiste (oben links), um zu wechseln. Falls dies mit dem Herunterziehen der Benachrichtigungen kollidiert, stelle in „Geste zum Umschalten der Sekunden“ auf Doppeltippen um.\n3. Stundenfarbe: Färbe die Zehnerstelle der Stunde in eine beliebige Farbe; Aus schaltet auf den Systemstandard zurück.\n4. Schwebende Uhrzeit: Halte die Uhrzeit in der Statusleiste gedrückt, um die Netzwerkzeit anzuzeigen.\n5. Änderungen wirken sofort; falls nicht, starte SystemUI oder das Gerät neu.</string>
+    <string name="settings_intro_ok">Los geht\'s</string>
+
+    <!-- 小时颜色色块的无障碍朗读名（颜色名） -->
+    <string name="swatch_red">Rot</string>
+    <string name="swatch_orange">Orange</string>
+    <string name="swatch_amber">Bernstein</string>
+    <string name="swatch_green">Grün</string>
+    <string name="swatch_cyan">Cyan</string>
+    <string name="swatch_blue">Blau</string>
+    <string name="swatch_purple">Lila</string>
+    <string name="swatch_pink">Rosa</string>
+    <string name="swatch_white">Weiß</string>
+    <string name="swatch_grey">Grau</string>
+</resources>

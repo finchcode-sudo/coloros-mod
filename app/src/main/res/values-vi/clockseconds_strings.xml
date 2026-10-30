@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="module_name">Hiển thị giây</string>
+    <string name="module_description">Hiển thị giây trên thời gian thanh trạng thái. Nhấn vào thời gian để bật/tắt giây; chữ số hàng chục của giờ được tô màu đỏ.</string>
+
+    <string name="settings_title">Hiển thị giây</string>
+    <string name="settings_status_title">Trạng thái hiện tại</string>
+    <string name="settings_enabled">Giây: Bật</string>
+    <string name="settings_disabled">Giây: Tắt</string>
+    <string name="settings_gesture_title">Thao tác bật/tắt giây</string>
+    <string name="settings_gesture_click">Nhấn thời gian</string>
+    <string name="settings_gesture_long_press">Nhấn giữ thời gian</string>
+    <string name="settings_hint">Lưu ý: cài đặt áp dụng ngay. Nếu không có tác dụng, hãy khởi động lại SystemUI hoặc thiết bị. Nếu chạm bị xung đột với việc kéo thanh thông báo, hãy dùng nhấn đúp.</string>
+    <string name="settings_refresh">Làm mới trạng thái</string>
+    <string name="settings_section_general">Chung</string>
+    <string name="settings_update_auto">Tự động kiểm tra cập nhật</string>
+    <string name="settings_update_auto_sum">Tự kiểm tra phiên bản mới khi mở ứng dụng</string>
+    <string name="settings_update_check">Kiểm tra cập nhật</string>
+    <string name="settings_update_open">Tải bản cập nhật</string>
+    <string name="settings_update_open_sum">Tải phiên bản mới nhất từ GitHub</string>
+    <string name="settings_section_about">Giới thiệu về mô-đun</string>
+    <string name="settings_about_version">Phiên bản: %1$s (%2$d)</string>
+    <string name="settings_about_github">GitHub</string>
+    <string name="settings_about_github_sum">Xem mã nguồn trên GitHub</string>
+    <string name="settings_about_licenses">Giấy phép nguồn mở</string>
+    <string name="settings_about_licenses_sum">Các thư viện nguồn mở bên thứ ba đã dùng</string>
+    <string name="update_checking">Đang kiểm tra cập nhật…</string>
+    <string name="update_latest">Bạn đang dùng bản mới nhất</string>
+    <string name="update_failed">Kiểm tra cập nhật thất bại. Hãy kiểm tra mạng và thử lại</string>
+    <string name="update_dialog_title">Có phiên bản mới</string>
+    <string name="update_dialog_msg">Đã tìm thấy phiên bản mới %1$s (hiện tại: %2$s). Mở trang cập nhật?</string>
+    <string name="update_go">Cập nhật</string>
+    <string name="update_later">Để sau</string>
+    <string name="licenses_text">Xposed API (de.robv.android.xposed:api:82): Apache License 2.0
+Mã nguồn của mô-đun này: MIT © kelebao</string>
+    <string name="settings_color_title">Màu giờ</string>
+    <string name="settings_color_hint">Nhấn vào màu để đổi — áp dụng ngay</string>
+    <string name="settings_write_failed">Ghi thất bại. Hãy chắc mô-đun đang hoạt động trong SystemUI hoặc cấp WRITE_SECURE_SETTINGS qua adb</string>
+    <string name="settings_color_enable">Bật màu giờ</string>
+    <string name="settings_color_enable_sum">Tắt để trở về kiểu mặc định của hệ thống</string>
+    <string name="settings_gesture_hint">Dùng thao tác này trên thời gian thanh trạng thái để bật/tắt giây</string>
+    <string name="settings_gesture_applied">Đã chuyển sang %1$s — áp dụng ngay. Nếu không có tác dụng, hãy khởi động lại SystemUI</string>
+    <string name="settings_gesture_double_tap">Nhấn đúp thời gian</string>
+    <string name="settings_network_time">Giờ mạng %1$s (máy %2$s)</string>
+    <string name="settings_network_time_fail">Không lấy được giờ mạng — nhấn để thử lại</string>
+    <string name="settings_sync_time">Đồng bộ</string>
+    <string name="settings_sync_requested">Đã bật tự động chỉnh giờ, hệ thống sẽ đồng bộ ngay</string>
+    <string name="settings_preview_hint">Gợi ý: nhấn vào thời gian thanh trạng thái (góc trên bên trái) để hiển thị/ẩn giây</string>
+    <string name="tile_label">Hiện giây</string>
+    <string name="settings_rule_title">Tên đồng hồ thanh trạng thái</string>
+    <string name="settings_rule_sum">Nếu đồng hồ không tự nhận diện, hãy nhập tên tài nguyên</string>
+    <string name="settings_rule_set">Cài đặt</string>
+    <string name="settings_rule_msg">Nếu đồng hồ thanh trạng thái không tự nhận diện trên thiết bị khác, hãy nhập tên tài nguyên (vd clock). Để trống dùng quy tắc mặc định. Khởi động lại SystemUI sau khi đổi.</string>
+    <string name="settings_rule_apply">Áp dụng</string>
+    <string name="settings_rule_reset">Đặt lại</string>
+    <string name="settings_rule_applied">Đã lưu quy tắc. Khởi động lại SystemUI để áp dụng.</string>
+    <string name="settings_rule_detect">Tự động phát hiện</string>
+    <string name="settings_rule_detecting">Đang phát hiện đồng hồ thanh trạng thái…</string>
+    <string name="settings_rule_detected">Đã nhận diện: %1$s</string>
+    <string name="settings_rule_detect_fail">Không tìm thấy đồng hồ. Hãy nhấn vào đồng hồ thanh trạng thái trước, hoặc khởi động lại SystemUI rồi thử lại.</string>
+    <string name="settings_rule_current">Hiện tại: %1$s</string>
+    <string name="settings_rule_builtin">tích hợp</string>
+    <string name="settings_rule_detected_builtin">Đã nhận diện đồng hồ thanh trạng thái. Quy tắc tích hợp đang hoạt động — không cần thiết lập thêm.</string>
+    <string name="settings_rule_detected_custom">Đã nhận diện đồng hồ thanh trạng thái. Đã lưu cấu hình. Khởi động lại SystemUI để áp dụng.</string>
+    <string name="settings_rule_dialog_desc">Không rõ? Nhấn “Tự động phát hiện” bên dưới để hoàn tất một chạm. Bạn cũng có thể nhập tên tài nguyên của widget thời gian (để trống = quy tắc mặc định).</string>
+    <string name="settings_rule_or_manual">Hoặc tự nhập tên tài nguyên widget thời gian</string>
+    <string name="settings_rule_confirm_title">Tên có thể không hợp lệ</string>
+    <string name="settings_rule_confirm_msg">“%1$s” không giống tên tài nguyên widget thời gian (thường chứa clock hoặc time) và có thể không hoạt động. Hãy thử “Tự động phát hiện” trước. Vẫn lưu?</string>
+    <string name="settings_rule_confirm_save">Vẫn lưu</string>
+    <string name="settings_launcher_title">Hiện biểu tượng trên màn hình chính</string>
+    <string name="settings_launcher_sum">Tạo lối tắt cài đặt trên màn hình chính; khi tắt vẫn mở được từ trình quản lý LSPosed</string>
+    <string name="settings_launcher_on">Đã hiện biểu tượng</string>
+    <string name="settings_launcher_off">Đã ẩn biểu tượng</string>
+    <string name="launcher_label">Đồng hồ</string>
+    <string name="settings_about_guide">Hướng dẫn sử dụng</string>
+    <string name="settings_about_guide_sum">Cách dùng và FAQ</string>
+    <string name="settings_intro_title">Chào mừng đến với Clock Seconds</string>
+    <string name="settings_intro_msg">Cảm ơn bạn đã cài đặt Clock Seconds!\n\n1. Kích hoạt: trong LSPosed, bật mô-đun này và đánh dấu «SystemUI», sau đó khởi động lại SystemUI.\n2. Hiện/ẩn giây: nhấn vào giờ trên thanh trạng thái (trên cùng bên trái) để chuyển đổi. Nếu xung đột với thao tác kéo xuống bảng thông báo, hãy chuyển sang nhấn đúp trong «Cử chỉ chuyển đổi giây».\n3. Màu giờ: tô màu chữ số hàng chục của giờ bất kỳ; tắt sẽ khôi phục về mặc định của hệ thống.\n4. Giờ nổi: nhấn giữ giờ trên thanh trạng thái để hiện giờ mạng.\n5. Thay đổi có hiệu lực ngay lập tức; nếu không, hãy khởi động lại SystemUI hoặc thiết bị.</string>
+    <string name="settings_intro_ok">Bắt đầu</string>
+
+    <!-- 小时颜色色块的无障碍朗读名（颜色名） -->
+    <string name="swatch_red">Đỏ</string>
+    <string name="swatch_orange">Cam</string>
+    <string name="swatch_amber">Hổ phách</string>
+    <string name="swatch_green">Lục</string>
+    <string name="swatch_cyan">Xanh ngọc</string>
+    <string name="swatch_blue">Xanh dương</string>
+    <string name="swatch_purple">Tím</string>
+    <string name="swatch_pink">Hồng</string>
+    <string name="swatch_white">Trắng</string>
+    <string name="swatch_grey">Xám</string>
+</resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="module_name">Zeit mit Sekunden</string>
+    <string name="module_name">Clock Seconds</string>
     <string name="module_description">Zeigt Sekunden in der Statusleistenzeit an. Tippe auf die Zeit, um die Sekundenanzeige umzuschalten; die Zehnerstelle der Stunde wird rot gefärbt.</string>
 
     <string name="settings_title">Zeit mit Sekunden</string>
@@ -71,7 +71,7 @@ Quellcode dieses Moduls: MIT © kelebao</string>
     <string name="settings_launcher_sum">Verknüpfung zu den Einstellungen auf dem Startbildschirm anlegen; wenn aus, über den LSPosed-Manager öffnen</string>
     <string name="settings_launcher_on">Launcher-Symbol eingeblendet</string>
     <string name="settings_launcher_off">Launcher-Symbol ausgeblendet</string>
-    <string name="launcher_label">Uhr</string>
+    <string name="launcher_label">Clock Seconds</string>
     <string name="settings_about_guide">Anleitung</string>
     <string name="settings_about_guide_sum">Anleitung und FAQ</string>
     <string name="settings_intro_title">Willkommen bei Clock Seconds</string>

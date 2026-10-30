@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="module_name">الوقت بالثواني</string>
+    <string name="module_name">Clock Seconds</string>
     <string name="module_description">يعرض الثواني في وقت شريط الحالة. انقر على الوقت لتبديل عرض الثواني، وتصبح خانة العشرات من الوقت باللون الأحمر.</string>
 
     <string name="settings_title">الوقت بالثواني</string>
@@ -71,7 +71,7 @@
     <string name="settings_launcher_sum">إضافة اختصار للإعدادات على الشاشة الرئيسية؛ عند الإيقاف افتحه من مدير LSPosed</string>
     <string name="settings_launcher_on">تم إظهار أيقونة المشغّل</string>
     <string name="settings_launcher_off">تم إخفاء أيقونة المشغّل</string>
-    <string name="launcher_label">الساعة</string>
+    <string name="launcher_label">Clock Seconds</string>
     <string name="settings_about_guide">دليل الاستخدام</string>
     <string name="settings_about_guide_sum">طريقة الاستخدام والأسئلة الشائعة</string>
     <string name="settings_intro_title">مرحبًا بك في Clock Seconds</string>

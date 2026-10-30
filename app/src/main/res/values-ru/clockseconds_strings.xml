@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="module_name">Секунды во времени</string>
+    <string name="module_name">Clock Seconds</string>
     <string name="module_description">Показываем секунды во времени строки состояния. Нажмите на время, чтобы переключить отображение секунд; десятки часов будут красными.</string>
 
     <string name="settings_title">Секунды во времени</string>
@@ -71,7 +71,7 @@
     <string name="settings_launcher_sum">Добавить ярлык настроек на главный экран; если выключено, открывайте из менеджера LSPosed</string>
     <string name="settings_launcher_on">Значок в лаунчере показан</string>
     <string name="settings_launcher_off">Значок в лаунчере скрыт</string>
-    <string name="launcher_label">Часы</string>
+    <string name="launcher_label">Clock Seconds</string>
     <string name="settings_about_guide">Руководство</string>
     <string name="settings_about_guide_sum">Как использовать и FAQ</string>
     <string name="settings_intro_title">Добро пожаловать в Clock Seconds</string>

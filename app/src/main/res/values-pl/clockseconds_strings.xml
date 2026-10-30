@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="module_name">Zegar z sekundami</string>
+    <string name="module_name">Clock Seconds</string>
     <string name="module_description">Pokazuje sekundy w czasie paska statusu. Dotknij czasu, aby włączyć/wyłączyć sekundy; dziesiątki godziny są kolorowane na czerwono.</string>
 
     <string name="settings_title">Zegar z sekundami</string>
@@ -71,7 +71,7 @@ Kod źródłowy tego modułu: MIT © kelebao</string>
     <string name="settings_launcher_sum">Dodaj skrót do ustawień na ekranie głównym; gdy wyłączone, otwieraj z menedżera LSPosed</string>
     <string name="settings_launcher_on">Ikona w launcherze pokazana</string>
     <string name="settings_launcher_off">Ikona w launcherze ukryta</string>
-    <string name="launcher_label">Zegar</string>
+    <string name="launcher_label">Clock Seconds</string>
     <string name="settings_about_guide">Przewodnik</string>
     <string name="settings_about_guide_sum">Jak używać i FAQ</string>
     <string name="settings_intro_title">Witaj w Clock Seconds</string>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="module_name">Ρολόι με δευτερόλεπτα</string>
+    <string name="module_name">Clock Seconds</string>
     <string name="module_description">Εμφανίζει τα δευτερόλεπτα στην ώρα της γραμμής κατάστασης. Πατήστε την ώρα για εναλλαγή των δευτερολέπτων· οι δεκάδες της ώρας εμφανίζονται με κόκκινο χρώμα.</string>
 
     <string name="settings_title">Ρολόι με δευτερόλεπτα</string>
@@ -71,7 +71,7 @@
     <string name="settings_launcher_sum">Προσθήκη συντόμευσης ρυθμίσεων στην αρχική οθόνη· αν είναι ανενεργό, ανοίξτε το από τον διαχειριστή LSPosed</string>
     <string name="settings_launcher_on">Το εικονίδιο εμφανίστηκε</string>
     <string name="settings_launcher_off">Το εικονίδιο κρύφτηκε</string>
-    <string name="launcher_label">Ρολόι</string>
+    <string name="launcher_label">Clock Seconds</string>
     <string name="settings_about_guide">Οδηγός χρήσης</string>
     <string name="settings_about_guide_sum">Τρόπος χρήσης και Συχνές ερωτήσεις</string>
     <string name="settings_intro_title">Καλώς ήρθατε στο Clock Seconds</string>

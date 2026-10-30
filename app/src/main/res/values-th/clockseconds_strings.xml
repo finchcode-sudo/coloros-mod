@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="module_name">เวลาแสดงวินาที</string>
+    <string name="module_name">Clock Seconds</string>
     <string name="module_description">แสดงวินาทีบนเวลาแถบสถานะ แตะเวลาเพื่อสลับการแสดงวินาที หลักสิบของชั่วโมงจะแสดงเป็นสีแดง</string>
 
     <string name="settings_title">เวลาแสดงวินาที</string>
@@ -71,7 +71,7 @@
     <string name="settings_launcher_sum">สร้างทางลัดการตั้งค่าบนหน้าจอหลัก ปิดแล้วยังเปิดได้จากตัวจัดการ LSPosed</string>
     <string name="settings_launcher_on">แสดงไอคอนแล้ว</string>
     <string name="settings_launcher_off">ซ่อนไอคอนแล้ว</string>
-    <string name="launcher_label">นาฬิกา</string>
+    <string name="launcher_label">Clock Seconds</string>
     <string name="settings_about_guide">คู่มือการใช้งาน</string>
     <string name="settings_about_guide_sum">วิธีใช้และคำถามที่พบบ่อย</string>
     <string name="settings_intro_title">ยินดีต้อนรับสู่ Clock Seconds</string>

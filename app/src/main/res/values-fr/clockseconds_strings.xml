@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="module_name">Secondes à l\'heure</string>
+    <string name="module_name">Clock Seconds</string>
     <string name="module_description">Affiche les secondes sur l\'heure de la barre d\'état. Touchez l\'heure pour activer/désactiver les secondes ; les dizaines de l\'heure sont colorées en rouge.</string>
 
     <string name="settings_title">Secondes à l\'heure</string>
@@ -71,7 +71,7 @@ Code source de ce module : MIT © kelebao</string>
     <string name="settings_launcher_sum">Ajouter un raccourci vers les réglages sur l\'écran d\'accueil ; si désactivé, ouvrez-les depuis le gestionnaire LSPosed</string>
     <string name="settings_launcher_on">Icône du lanceur affichée</string>
     <string name="settings_launcher_off">Icône du lanceur masquée</string>
-    <string name="launcher_label">Horloge</string>
+    <string name="launcher_label">Clock Seconds</string>
     <string name="settings_about_guide">Guide d\'utilisation</string>
     <string name="settings_about_guide_sum">Mode d\'emploi et FAQ</string>
     <string name="settings_intro_title">Bienvenue dans Clock Seconds</string>

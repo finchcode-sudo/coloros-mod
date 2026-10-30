@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="module_name">Hiển thị giây</string>
+    <string name="module_name">Clock Seconds</string>
     <string name="module_description">Hiển thị giây trên thời gian thanh trạng thái. Nhấn vào thời gian để bật/tắt giây; chữ số hàng chục của giờ được tô màu đỏ.</string>
 
     <string name="settings_title">Hiển thị giây</string>
@@ -71,7 +71,7 @@ Mã nguồn của mô-đun này: MIT © kelebao</string>
     <string name="settings_launcher_sum">Tạo lối tắt cài đặt trên màn hình chính; khi tắt vẫn mở được từ trình quản lý LSPosed</string>
     <string name="settings_launcher_on">Đã hiện biểu tượng</string>
     <string name="settings_launcher_off">Đã ẩn biểu tượng</string>
-    <string name="launcher_label">Đồng hồ</string>
+    <string name="launcher_label">Clock Seconds</string>
     <string name="settings_about_guide">Hướng dẫn sử dụng</string>
     <string name="settings_about_guide_sum">Cách dùng và FAQ</string>
     <string name="settings_intro_title">Chào mừng đến với Clock Seconds</string>

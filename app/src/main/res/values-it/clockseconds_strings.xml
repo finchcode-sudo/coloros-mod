@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="module_name">Orologio con i secondi</string>
+    <string name="module_name">Clock Seconds</string>
     <string name="module_description">Mostra i secondi sull\'ora della barra di stato. Tocca l\'ora per attivare/disattivare i secondi; la decina dell\'ora è colorata di rosso.</string>
 
     <string name="settings_title">Orologio con i secondi</string>
@@ -71,7 +71,7 @@ Codice sorgente di questo modulo: MIT © kelebao</string>
     <string name="settings_launcher_sum">Aggiunge una scorciatoia alle impostazioni nella schermata iniziale; se disattivato, aprilo dal gestore LSPosed</string>
     <string name="settings_launcher_on">Icona del launcher mostrata</string>
     <string name="settings_launcher_off">Icona del launcher nascosta</string>
-    <string name="launcher_label">Orologio</string>
+    <string name="launcher_label">Clock Seconds</string>
     <string name="settings_about_guide">Guida all\'uso</string>
     <string name="settings_about_guide_sum">Come usare e FAQ</string>
     <string name="settings_intro_title">Benvenuto in Clock Seconds</string>

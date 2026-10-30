@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="module_name">დრო წამებით</string>
+    <string name="module_name">Clock Seconds</string>
     <string name="module_description">აჩვენებს წამებს სტატუსის ზოლის დროზე. დააჭირეთ დროს წამების ჩვენების ჩასართავად/გამოსართავად; დროის ათეულის ციფრი წითელია.</string>
 
     <string name="settings_title">დრო წამებით</string>
@@ -71,7 +71,7 @@
     <string name="settings_launcher_sum">მთავარ ეკრანზე პარამეტრების მალსახმობის დამატება; გამორთულისას გახსენით LSPosed მენეჯერიდან</string>
     <string name="settings_launcher_on">ხატული ნაჩვენებია</string>
     <string name="settings_launcher_off">ხატული დამალულია</string>
-    <string name="launcher_label">საათი</string>
+    <string name="launcher_label">Clock Seconds</string>
     <string name="settings_about_guide">გამოყენების სახელმძღვანელო</string>
     <string name="settings_about_guide_sum">როგორ გამოიყენოთ და ხშირად დასმული კითხვები</string>
     <string name="settings_intro_title">მოგესალმებით Clock Seconds-ში</string>

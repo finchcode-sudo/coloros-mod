@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="module_name">Segundos en la hora</string>
+    <string name="module_name">Clock Seconds</string>
     <string name="module_description">Muestra los segundos en la hora de la barra de estado. Toca la hora para alternar los segundos; la decena de la hora se muestra en rojo.</string>
 
     <string name="settings_title">Segundos en la hora</string>
@@ -71,7 +71,7 @@ Código fuente de este módulo: MIT © kelebao</string>
     <string name="settings_launcher_sum">Añade un acceso a los ajustes en la pantalla de inicio; si está desactivado, ábrelo desde el gestor de LSPosed</string>
     <string name="settings_launcher_on">Icono del lanzador mostrado</string>
     <string name="settings_launcher_off">Icono del lanzador oculto</string>
-    <string name="launcher_label">Reloj</string>
+    <string name="launcher_label">Clock Seconds</string>
     <string name="settings_about_guide">Guía de uso</string>
     <string name="settings_about_guide_sum">Cómo usar y preguntas frecuentes</string>
     <string name="settings_intro_title">Bienvenido a Clock Seconds</string>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="module_name">Saat Saniye Gösterme</string>
+    <string name="module_name">Clock Seconds</string>
     <string name="module_description">Durum çubuğu zamanında saniyeleri gösterir. Zamana dokunarak saniye gösterimini açıp kapatabilirsiniz; zamanın onlar basamağı kırmızı renkte görünür.</string>
 
     <string name="settings_title">Saat Saniye Gösterme</string>
@@ -71,7 +71,7 @@ Bu modülün kaynak kodu: MIT © kelebao</string>
     <string name="settings_launcher_sum">Ana ekrana ayarlar kısayolu ekle; kapalıyken LSPosed yöneticisinden açılır</string>
     <string name="settings_launcher_on">Başlatıcı simgesi gösterildi</string>
     <string name="settings_launcher_off">Başlatıcı simgesi gizlendi</string>
-    <string name="launcher_label">Saat</string>
+    <string name="launcher_label">Clock Seconds</string>
     <string name="settings_about_guide">Kullanım kılavuzu</string>
     <string name="settings_about_guide_sum">Nasıl kullanılır ve SSS</string>
     <string name="settings_intro_title">Clock Seconds\'a hoş geldiniz</string>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="module_name">時刻の秒表示</string>
+    <string name="module_name">Clock Seconds</string>
     <string name="module_description">ステータスバーの時刻に秒を表示します。時刻をタップすると秒表示を切り替えられ、時間の十の位が赤くなります。</string>
 
     <string name="settings_title">時刻の秒表示</string>
@@ -71,7 +71,7 @@
     <string name="settings_launcher_sum">ホーム画面に設定へのショートカットを作成。オフでも LSPosed マネージャーから開けます</string>
     <string name="settings_launcher_on">ランチャーのアイコンを表示しました</string>
     <string name="settings_launcher_off">ランチャーのアイコンを非表示にしました</string>
-    <string name="launcher_label">時計</string>
+    <string name="launcher_label">Clock Seconds</string>
     <string name="settings_about_guide">使い方ガイド</string>
     <string name="settings_about_guide_sum">使い方とよくある質問</string>
     <string name="settings_intro_title">Clock Seconds へようこそ</string>

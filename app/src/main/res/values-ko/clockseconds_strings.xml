@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="module_name">시간 초 단위 표시</string>
+    <string name="module_name">Clock Seconds</string>
     <string name="module_description">상태 표시줄 시간에 초를 표시합니다. 시간을 탭하면 초 표시를 켜고 끌 수 있으며, 시간의 십의 자리는 빨간색으로 표시됩니다.</string>
 
     <string name="settings_title">시간 초 단위 표시</string>
@@ -71,7 +71,7 @@
     <string name="settings_launcher_sum">홈 화면에 설정 바로가기를 만듭니다. 꺼도 LSPosed 관리자에서 열 수 있습니다</string>
     <string name="settings_launcher_on">런처 아이콘을 표시했습니다</string>
     <string name="settings_launcher_off">런처 아이콘을 숨겼습니다</string>
-    <string name="launcher_label">시계</string>
+    <string name="launcher_label">Clock Seconds</string>
     <string name="settings_about_guide">사용 안내</string>
     <string name="settings_about_guide_sum">사용 방법 및 FAQ</string>
     <string name="settings_intro_title">Clock Seconds에 오신 것을 환영합니다</string>

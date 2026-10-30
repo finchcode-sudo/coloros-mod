@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="module_name">Jam dengan Detik</string>
+    <string name="module_name">Clock Seconds</string>
     <string name="module_description">Menampilkan detik pada waktu bilah status. Ketuk waktu untuk menyalangkan detik; digit puluhan waktu berwarna merah.</string>
 
     <string name="settings_title">Jam dengan Detik</string>
@@ -71,7 +71,7 @@ Kode sumber modul ini: MIT © kelebao</string>
     <string name="settings_launcher_sum">Tambahkan pintasan pengaturan di layar utama; jika mati, buka dari pengelola LSPosed</string>
     <string name="settings_launcher_on">Ikon peluncur ditampilkan</string>
     <string name="settings_launcher_off">Ikon peluncur disembunyikan</string>
-    <string name="launcher_label">Jam</string>
+    <string name="launcher_label">Clock Seconds</string>
     <string name="settings_about_guide">Panduan penggunaan</string>
     <string name="settings_about_guide_sum">Cara menggunakan dan FAQ</string>
     <string name="settings_intro_title">Selamat datang di Clock Seconds</string>

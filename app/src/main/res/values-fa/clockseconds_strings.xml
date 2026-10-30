@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="module_name">زمان با ثانیه</string>
+    <string name="module_name">Clock Seconds</string>
     <string name="module_description">ثانیه‌ها را روی زمان نوار وضعیت نمایش می‌دهد. برای روشن/خاموش کردن ثانیه روی زمان ضربه بزنید؛ رقم ده‌ها زمان قرمز رنگ می‌شود.</string>
 
     <string name="settings_title">زمان با ثانیه</string>
@@ -71,7 +71,7 @@
     <string name="settings_launcher_sum">میان‌بر تنظیمات در صفحه اصلی بسازید؛ وقتی خاموش است از مدیر LSPosed باز کنید</string>
     <string name="settings_launcher_on">آیکون لانچر نمایش داده شد</string>
     <string name="settings_launcher_off">آیکون لانچر پنهان شد</string>
-    <string name="launcher_label">ساعت</string>
+    <string name="launcher_label">Clock Seconds</string>
     <string name="settings_about_guide">راهنمای استفاده</string>
     <string name="settings_about_guide_sum">نحوه استفاده و سوالات متداول</string>
     <string name="settings_intro_title">به Clock Seconds خوش آمدید</string>

@@ -166,8 +166,8 @@ internal data class GroupTitleItem(val title: Int) : SettingsItem
 
 internal data class NavigationAppsItem(val title: Int) : SettingsItem
 
-// 打开并入的 Clock Seconds 独立设置页(设置项较多的模块以入口行呈现, 不单独占桌面图标)。
-internal data class ClockSecondsEntryItem(val title: Int) : SettingsItem
+// 打开并入模块的独立设置页(设置项较多的模块以入口行呈现, 不单独占桌面图标)。
+internal data class PageEntryItem(val title: Int, val activityClass: String) : SettingsItem
 
 internal data class SwitchItem(
     val key: String,
@@ -280,7 +280,7 @@ private val NOTIF: List<SettingsItem> = listOf(
     SwitchItem("hide_roaming_icon", R.string.ui_hide_roaming),
     SelectItem("signal_network_type_mode", R.string.ui_signal_network_type, listOf(R.string.ui_option_default_display, R.string.ui_option_separate_display, R.string.ui_option_hide)),
     SelectItem("status_bar_clock_font", R.string.ui_statusbar_font, listOf(R.string.ui_option_system_default, R.string.ui_font_inter, R.string.ui_font_manrope, R.string.ui_font_rubik, R.string.ui_font_lato)),
-    ClockSecondsEntryItem(R.string.ui_clock_seconds_entry),
+    PageEntryItem(R.string.ui_clock_seconds_entry, "com.rikumi.colorosmod.clockseconds.settings.ModuleSettingsActivity"),
     SelectItem("status_bar_clock_weight", R.string.ui_statusbar_weight, listOf(R.string.ui_option_follow_system, R.string.ui_weight_100, R.string.ui_weight_200, R.string.ui_weight_300, R.string.ui_weight_400, R.string.ui_weight_500, R.string.ui_weight_600, R.string.ui_weight_700, R.string.ui_weight_800, R.string.ui_weight_900)),
     SelectItem("statusbar_lyric_mode", R.string.ui_statusbar_lyric,
         listOf(R.string.ui_lyric_mode_off, R.string.ui_lyric_mode_notification),
@@ -412,6 +412,8 @@ private val PURIFICATION: List<SettingsItem> = listOf(
     SelectItem("weather_api_region", R.string.weather_api_region, listOf(R.string.weather_api_default, R.string.weather_api_china, R.string.weather_api_overseas)),
     GroupTitleItem(R.string.app_start_confirm_permission_group),
     SwitchItem("app_start_confirm_always_allow_enabled", R.string.app_start_confirm_always_allow),
+    GroupTitleItem(R.string.ui_text_menu_group),
+    PageEntryItem(R.string.ui_text_menu_entry, "com.rikumi.colorosmod.textmenu.MainActivity"),
 )
 
 private val SYSTEM_FONTS: List<SettingsItem> = listOf(
@@ -492,7 +494,7 @@ private fun SettingsItem.isEnabledInMaster(prefs: SharedPreferences): Boolean = 
     is SwitchItem -> prefs.getBoolean(settingKey, defaultEnabled)
     is FolderBlockItem -> prefs.getBoolean(settingKey, false)
     is SelectItem -> prefs.getInt(key, defaultValue) != 0
-    is GroupTitleItem, is NavigationAppsItem, is ClockSecondsEntryItem -> false
+    is GroupTitleItem, is NavigationAppsItem, is PageEntryItem -> false
 }
 
 private val SettingsItem.settingKey: String
@@ -500,7 +502,7 @@ private val SettingsItem.settingKey: String
         is SwitchItem -> key
         is FolderBlockItem -> key
         is SelectItem -> key
-        is GroupTitleItem, is NavigationAppsItem, is ClockSecondsEntryItem -> ""
+        is GroupTitleItem, is NavigationAppsItem, is PageEntryItem -> ""
     }
 
 private fun List<SettingsItem>.splitByDivider(): List<SwitchGroup> {
@@ -519,7 +521,7 @@ private fun List<SettingsItem>.splitByDivider(): List<SwitchGroup> {
             is FolderBlockItem -> current.add(item)
             is SelectItem -> current.add(item)
             is NavigationAppsItem -> current.add(item)
-            is ClockSecondsEntryItem -> current.add(item)
+            is PageEntryItem -> current.add(item)
         }
     }
     if (current.isNotEmpty()) result.add(SwitchGroup(desc, current))

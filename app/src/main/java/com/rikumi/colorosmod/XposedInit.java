@@ -1237,6 +1237,9 @@ public class XposedInit extends XposedModule {
             MediaProviderHooks.hookMediaProvider(lpparam);
         } else if ("android".equals(lpparam.packageName)) {
             com.rikumi.colorosmod.hooks.SystemFontHooks.hook(lpparam);
+            // 文本选择菜单控制(移植自 txtoi): 过滤/排序/改名文字选择菜单里的处理文本扩展项。
+            try { com.rikumi.colorosmod.textmenu.SelectionMenuHooks.hookSystemServer(lpparam.classLoader); }
+            catch (Throwable error) { log("text menu hooks unavailable: " + error); }
             // system_server: 承载"贴边最小化"的真正提交逻辑(com.android.server.wm.FlexibleTaskController)
             SystemServerHooks.hookFloatWindowEdgeHangSystemServer(lpparam);
             // system_server: 贴边挂机静音, 走系统多应用音量通道

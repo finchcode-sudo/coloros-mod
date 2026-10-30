@@ -44,6 +44,8 @@ android {
         }
         versionCode 10400
         versionName '1.4.0'
+        // 文本菜单控制: 模块页与 system_server 内的 hook 用该值校验加载的是同一次构建(更新后需重启)。
+        buildConfigField 'String', 'PROBE_BUILD_ID', "\"${System.currentTimeMillis()}\""
     }
 
     signingConfigs {
@@ -76,6 +78,7 @@ android {
 
     buildFeatures {
         compose true
+        buildConfig true
     }
 }
 

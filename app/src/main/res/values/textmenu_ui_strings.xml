@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ui_text_menu_group">"文字选择菜单"</string>
+    <string name="ui_text_menu_entry">"文本菜单控制"</string>
+</resources>

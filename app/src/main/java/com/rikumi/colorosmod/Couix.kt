@@ -1028,12 +1028,11 @@ internal fun CouixGroup(
                         title = ctx.getString(item.title),
                         onClick = onOpenNavigationApps,
                     )
-                    is ClockSecondsEntryItem -> CouixCategoryRow(
+                    is PageEntryItem -> CouixCategoryRow(
                         icon = null,
                         title = ctx.getString(item.title),
                         onClick = {
-                            val intent = android.content.Intent(ctx,
-                                com.rikumi.colorosmod.clockseconds.settings.ModuleSettingsActivity::class.java)
+                            val intent = android.content.Intent().setClassName(ctx, item.activityClass)
                             if (ctx !is android.app.Activity) intent.addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK)
                             ctx.startActivity(intent)
                         },
@@ -1055,7 +1054,7 @@ private val SettingsItem.keyForCompose: String
         is SelectItem -> key
         is GroupTitleItem -> "group:$title"
         is NavigationAppsItem -> "navigation_apps"
-        is ClockSecondsEntryItem -> "clock_seconds_entry"
+        is PageEntryItem -> "page:$activityClass"
     }
 
 @Composable

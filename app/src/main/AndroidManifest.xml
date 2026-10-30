@@ -27,6 +27,11 @@
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
         </intent>
+        <!-- 文本菜单控制: 列出手机上的「处理文本」扩展项 -->
+        <intent>
+            <action android:name="android.intent.action.PROCESS_TEXT" />
+            <data android:mimeType="text/plain" />
+        </intent>
     </queries>
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -74,6 +79,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
+
+        <activity
+            android:name=".textmenu.MainActivity"
+            android:exported="false"
+            android:label="@string/ui_text_menu_entry"
+            android:theme="@style/tm_AppTheme"
+            android:windowSoftInputMode="adjustResize" />
 
         <activity
             android:name=".clockseconds.settings.ModuleSettingsActivity"

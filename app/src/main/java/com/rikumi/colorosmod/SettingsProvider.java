@@ -28,6 +28,7 @@ public class SettingsProvider extends ContentProvider {
         if (getContext() != null) HomeControlsTileSettings.sync(getContext());
         if (getContext() != null) {
             Context context = getContext().getApplicationContext();
+            FontFailureLog.initialize(context);
             new Thread(() -> SystemFontMounts.INSTANCE.resume(context), "font-mount-recovery").start();
         }
         return true;
@@ -44,11 +45,12 @@ public class SettingsProvider extends ContentProvider {
     }
 
     // Split the former shared icon behavior once, preserving an explicit panel choice.
+    // Persist false even on a fresh install so a later master toggle cannot trigger migration.
     public static void migrateNotificationIconPrefs(Context context, SharedPreferences preferences) {
         synchronized (preferences) {
             String panelKey = "notification_center_monochrome_icons_enabled";
             String statusBarKey = "statusbar_monochrome_notification_icons_enabled";
-            if (!preferences.contains(panelKey) && preferences.contains(statusBarKey)
+            if (!preferences.contains(panelKey)
                     && preferences.edit().putBoolean(panelKey,
                             preferences.getBoolean(statusBarKey, false)).commit()) {
                 notifySettingsChanged(context);

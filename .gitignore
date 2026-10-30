@@ -40,3 +40,6 @@ app/build
 !/scripts/verify-apk-signature.py
 !/README.md
 /device-state/
+
+/.kotlin/
+!/scripts/check-font-app-mounts.py

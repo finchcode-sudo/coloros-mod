@@ -10,13 +10,47 @@ import java.io.File
 import java.security.MessageDigest
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.Executors
+import java.util.concurrent.Future
 import java.util.concurrent.atomic.AtomicLong
 
 /** Publishes the same font snapshot to filesystem consumers which never enter Xposed. */
 internal object SystemFontMounts {
     private const val ROOT = "/data/adb/coloros-mod-fonts"
+    // A populated device can have over 130 mount namespaces. Sequential
+    // transactions, including boot recovery holding the lock, can exceed 90 seconds.
+    private const val TRANSACTION_TIMEOUT_SECONDS = 600L
     private const val CONFIGURED = "font_mount_configured"
     private const val REQUESTED = "font_mount_requested"
+    const val PACKAGES = "system_font_mount_packages"
+    fun defaultApplications(context: Context): Set<String> = setOf("com.android.chrome",
+        android.webkit.WebView.getCurrentWebViewPackage()?.packageName ?: "com.android.webview")
+    fun applications(context: Context): Set<String> =
+        context.settingsPrefs().getStringSet(PACKAGES, defaultApplications(context)).orEmpty().toSet()
+
+    fun applicationsChanged(context: Context) {
+        SystemFontStore.enqueue {
+            val app = context.applicationContext
+            if (app.settingsPrefs().getBoolean(ENABLED, false)) {
+                MainActivity.xposedServices.forEach { SystemFontStore.sync(app, it) }
+            }
+        }
+    }
+
+    private fun selectionInstaller(context: Context): String {
+        val file = File(context.createDeviceProtectedStorageContext().filesDir, "font_mount_packages")
+        val packages = applications(context).sorted()
+        require(packages.all { it.matches(Regex("[A-Za-z0-9_]+(\\.[A-Za-z0-9_]+)+")) })
+        write(file, packages.joinToString("\n", postfix = "\n").toByteArray())
+        val provider = File(file.parentFile, "webview_provider")
+        val packageName = android.webkit.WebView.getCurrentWebViewPackage()?.packageName ?: "com.android.webview"
+        require(packageName.matches(Regex("[A-Za-z0-9_]+(\\.[A-Za-z0-9_]+)+")))
+        write(provider, packageName.toByteArray())
+        return "cp ${quote(provider.absolutePath)} $ROOT/webview-provider.new && " +
+            "mv $ROOT/webview-provider.new $ROOT/webview-provider && " +
+            "cp ${quote(file.absolutePath)} $ROOT/packages.new && chmod 0600 $ROOT/packages.new && " +
+            "mv $ROOT/packages.new $ROOT/packages && "
+    }
+
     const val ENABLED = "system_font_mount_enabled"
     private val configs = listOf("/system/etc/fonts.xml", "/system/etc/font_fallback.xml",
         "/system_ext/etc/fonts_base.xml", "/product/etc/fonts_customization.xml")
@@ -26,12 +60,35 @@ internal object SystemFontMounts {
         Thread(task, "font-mount-sync").also { it.isDaemon = true }
     }
 
+    @Volatile private var pending: Future<*>? = null
+
     // Saving a font selection finishes independently of the optional root transaction.
     fun schedule(context: Context, service: XposedService, manifest: String) {
         val app = context.applicationContext
+        schedule { sync(app, service, manifest) }
+    }
+
+    fun scheduleRestore(context: Context) {
+        val app = context.applicationContext
+        schedule { resume(app, waitForCompletion = true) }
+    }
+
+    private fun schedule(operation: () -> Unit) {
         val request = requests.incrementAndGet()
-        worker.execute {
-            if (request == requests.get()) sync(app, service, manifest)
+        pending = worker.submit {
+            if (request == requests.get()) operation()
+        }
+    }
+
+    fun awaitPending(context: Context) {
+        while (true) {
+            val task = pending
+            if (task == null) {
+                resume(context, waitForCompletion = true)
+                return
+            }
+            task.get()
+            if (task === pending) return
         }
     }
 
@@ -39,7 +96,7 @@ internal object SystemFontMounts {
     private fun sync(context: Context, service: XposedService, manifest: String) {
         val app = context.applicationContext
         val prefs = app.settingsPrefs()
-        if (!prefs.getBoolean(ENABLED, false)) { resume(app); return }
+        if (!prefs.getBoolean(ENABLED, false)) { resume(app, waitForCompletion = true); return }
         runCatching {
             val de = app.createDeviceProtectedStorageContext()
             val directory = File(de.filesDir, "font_mounts").also { check(it.isDirectory || it.mkdirs()) }
@@ -83,39 +140,46 @@ internal object SystemFontMounts {
             }
             val installer = backendInstaller(app, script)
             check(prefs.edit().putBoolean(REQUESTED, true).commit())
-            val command = installBackend(installer) +
+            val command = installBackend(installer) + selectionInstaller(app) +
                 "(" + loggedWorker("/system/bin/sh $ROOT/backend.sh apply ${quote(input.absolutePath)} $version", "apply") + ")"
-            execute(command, 90)
+            execute(command, TRANSACTION_TIMEOUT_SECONDS)
             check(prefs.edit().putBoolean(CONFIGURED, true).commit())
         }.onFailure {
-            AppLog.log("WebView font mount failed: $it")
+            FontFailureLog.record("WebView font mount failed", it)
             Handler(Looper.getMainLooper()).post {
                 Toast.makeText(app, R.string.ui_font_mount_failed, Toast.LENGTH_LONG).show()
             }
-        }
+        }.getOrThrow()
     }
 
     /** Boot recovery replays the root-owned snapshot and does not need a live Xposed service. */
+    @JvmOverloads
     @Synchronized
-    fun resume(context: Context) {
-        runCatching {
+    fun resume(context: Context, waitForCompletion: Boolean = false) {
+        val result = runCatching {
             val prefs = context.settingsPrefs()
             if (!prefs.getBoolean(CONFIGURED, false) && !prefs.getBoolean(REQUESTED, false)) return
             if (!prefs.getBoolean(ENABLED, false)) {
                 restore(context)
                 return
             }
-            // The detached, root-owned worker can finish even after the broadcast receiver exits.
-            execute(installBackend(backendInstaller(context)) +
-                "( (" + loggedWorker("/system/bin/sh $ROOT/backend.sh resume", "boot") + ") >/dev/null 2>&1 </dev/null &)", 7)
-        }.onFailure { AppLog.log("WebView font mount recovery failed: $it") }
+            if (waitForCompletion) {
+                execute(installBackend(backendInstaller(context)) + selectionInstaller(context) +
+                    "(" + loggedWorker("/system/bin/sh $ROOT/backend.sh resume", "boot") + ")", TRANSACTION_TIMEOUT_SECONDS)
+            } else {
+                // The detached, root-owned worker can finish even after the broadcast receiver exits.
+                execute(installBackend(backendInstaller(context)) +
+                    "( (" + loggedWorker("/system/bin/sh $ROOT/backend.sh resume", "boot") + ") >/dev/null 2>&1 </dev/null &)", 7)
+            }
+        }.onFailure { FontFailureLog.record("WebView font mount recovery failed", it) }
+        if (waitForCompletion) result.getOrThrow()
     }
 
     /** Used when retiring the filesystem backend; only mounts owned by this backend are detached. */
     @Synchronized
     fun restore(context: Context) {
         // Upgrade the worker even when disabling, so old namespace bugs cannot block restore.
-        execute(installBackend(backendInstaller(context)) + "/system/bin/sh $ROOT/backend.sh restore", 90)
+        execute(installBackend(backendInstaller(context)) + "/system/bin/sh $ROOT/backend.sh restore", TRANSACTION_TIMEOUT_SECONDS)
         check(context.settingsPrefs().edit().putBoolean(CONFIGURED, false).putBoolean(REQUESTED, false).commit())
     }
 
@@ -164,7 +228,7 @@ internal object SystemFontMounts {
         }.also { it.isDaemon = true; it.start() }
         if (!process.waitFor(timeoutSeconds, TimeUnit.SECONDS)) {
             // Do not kill a transaction half way through; a granted root worker may still complete it.
-            error("Font mount worker timed out; inspect $ROOT/last-boot.log and retry")
+            error("Font mount worker timed out; inspect $ROOT/*.log before retrying")
         }
         reader.join(1000)
         check(process.exitValue() == 0) { synchronized(output) { output.toString().takeLast(4096) } }

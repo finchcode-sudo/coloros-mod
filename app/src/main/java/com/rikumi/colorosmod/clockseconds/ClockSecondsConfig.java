@@ -1,4 +1,4 @@
-package com.rikumi.colorosmod;
+package com.rikumi.colorosmod.clockseconds;
 
 import android.content.ContentResolver;
 import android.provider.Settings;

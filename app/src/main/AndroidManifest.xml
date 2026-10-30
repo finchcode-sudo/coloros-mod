@@ -77,24 +77,10 @@
 
         <activity
             android:name=".clockseconds.settings.ModuleSettingsActivity"
-            android:taskAffinity="com.rikumi.colorosmod.clockseconds"
-            android:exported="true"
+            android:exported="false"
             android:label="@string/module_name"
             android:theme="@style/Theme.ColorOSClockSeconds" />
 
-        <activity-alias
-            android:name=".clockseconds.settings.LauncherAlias"
-            android:enabled="true"
-            android:exported="true"
-            android:icon="@mipmap/cs_ic_launcher"
-            android:roundIcon="@mipmap/cs_ic_launcher_round"
-            android:label="@string/launcher_label"
-            android:targetActivity=".clockseconds.settings.ModuleSettingsActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity-alias>
 
         <service
             android:name=".clockseconds.tile.SecondsTileService"

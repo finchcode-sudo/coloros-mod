@@ -220,7 +220,6 @@ public final class ModuleSettingsActivity extends Activity {
         initPressSound();
         mPressTilt.setOnPressDownListener(this::playPressSound);
         applyStatusBarAppearance();
-        reconcileLauncherIcon();
         refreshStatus();
         maybeShowIntro();
         maybeAutoCheckUpdate();
@@ -340,7 +339,6 @@ public final class ModuleSettingsActivity extends Activity {
         buildStatsRow(root);
         buildColorCard(root);
         buildAdvancedCard(root);
-        buildLauncherCard(root);
         buildUpdateCard(root);
         buildAboutCard(root);
         buildPrimaryButton(root);

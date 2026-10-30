@@ -77,6 +77,7 @@
 
         <activity
             android:name=".clockseconds.settings.ModuleSettingsActivity"
+            android:taskAffinity="com.rikumi.colorosmod.clockseconds"
             android:exported="true"
             android:label="@string/module_name"
             android:theme="@style/Theme.ColorOSClockSeconds" />

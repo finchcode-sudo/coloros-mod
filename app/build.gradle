@@ -45,7 +45,7 @@ android {
         versionCode 10503
         versionName '1.5.3'
         // 文本菜单控制: 模块页与 system_server 内的 hook 用该值校验加载的是同一次构建(更新后需重启)。
-        buildConfigField 'String', 'PROBE_BUILD_ID', "\"${System.currentTimeMillis()}\""
+        buildConfigField 'String', 'PROBE_BUILD_ID', "\"${java.security.MessageDigest.getInstance('SHA-256').digest(String.valueOf(System.currentTimeMillis()).getBytes('UTF-8')).encodeHex().toString()}\""
     }
 
     signingConfigs {

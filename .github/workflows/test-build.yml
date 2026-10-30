@@ -1,12 +1,12 @@
 name: Test Build
 
-# 测试构建: 用一次性 keystore 编译 debug APK 并上传为 artifact。
+# 测试构建: 每次 push 到 main/master/test 自动触发(也可手动运行), 用一次性 keystore 编译 debug APK 并上传为 artifact。
 # 不打 tag、不发 release、不校验固定证书、不需要任何 secret。
 # 每次构建的签名都不同, 安装前需先卸载旧版本。
 on:
   workflow_dispatch:
   push:
-    branches: [ test ]
+    branches: [ main, master, test ]
 
 permissions:
   contents: read

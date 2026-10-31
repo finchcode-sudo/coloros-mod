@@ -133,6 +133,12 @@ public class SettingsProvider extends ContentProvider {
                         }
                     }
                 }
+                Object banPackages = all.get(BanUninstallSettings.PACKAGES);
+                if (banPackages instanceof java.util.Set<?>) {
+                    for (Object pkg : (java.util.Set<?>) banPackages) {
+                        if (pkg instanceof String) all2.addRow(new Object[]{BanUninstallSettings.PREFIX + pkg, 1});
+                    }
+                }
                 Object navigationPackages = all.get(AppNavigationSettings.PACKAGES);
                 if (navigationPackages instanceof java.util.Set<?>) {
                     all2.addRow(new Object[]{AppNavigationSettings.CONFIGURED, 1});

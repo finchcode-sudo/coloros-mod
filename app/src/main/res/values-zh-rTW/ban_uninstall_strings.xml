@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ui_ban_uninstall_group">禁止解除安裝與清除資料</string>
+    <string name="ui_ban_uninstall">禁止解除安裝應用程式</string>
+    <string name="ui_ban_uninstall_hint">攔截解除安裝請求，受保護的應用程式無法解除安裝</string>
+    <string name="ui_ban_clear_data">禁止清除應用程式資料</string>
+    <string name="ui_ban_clear_data_hint">攔截清除資料請求，受保護的應用程式無法清除資料</string>
+    <string name="ui_ban_use_list">僅保護清單中的應用程式</string>
+    <string name="ui_ban_use_list_hint">關閉時保護所有應用程式；開啟後只保護清單中的應用程式</string>
+    <string name="ui_ban_apps">禁止解除安裝應用程式清單</string>
+</resources>

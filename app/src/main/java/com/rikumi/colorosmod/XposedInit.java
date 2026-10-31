@@ -1240,6 +1240,9 @@ public class XposedInit extends XposedModule {
             MediaProviderHooks.hookMediaProvider(lpparam);
         } else if ("android".equals(lpparam.packageName)) {
             com.rikumi.colorosmod.hooks.SystemFontHooks.hook(lpparam);
+            // 禁止卸载 / 禁止清除数据(移植自 BanUninstall)
+            try { com.rikumi.colorosmod.hooks.BanUninstallHooks.hook(lpparam); }
+            catch (Throwable error) { log("ban uninstall hooks unavailable: " + error); }
             // 文本选择菜单控制(移植自 txtoi): 过滤/排序/改名文字选择菜单里的处理文本扩展项。
             try { com.rikumi.colorosmod.textmenu.SelectionMenuHooks.hookSystemServer(lpparam.classLoader); }
             catch (Throwable error) { log("text menu hooks unavailable: " + error); }

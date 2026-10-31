@@ -481,6 +481,11 @@ private val PURIFICATION: List<SettingsItem> = listOf(
     SwitchItem("app_start_confirm_always_allow_enabled", R.string.app_start_confirm_always_allow),
     GroupTitleItem(R.string.ui_text_menu_group),
     PageEntryItem(R.string.ui_text_menu_entry, "com.rikumi.colorosmod.textmenu.MainActivity"),
+    GroupTitleItem(R.string.ui_ban_uninstall_group),
+    SwitchItem(BanUninstallSettings.UNINSTALL, R.string.ui_ban_uninstall, R.string.ui_ban_uninstall_hint, masterManaged = false),
+    SwitchItem(BanUninstallSettings.CLEAR_DATA, R.string.ui_ban_clear_data, R.string.ui_ban_clear_data_hint, masterManaged = false),
+    SwitchItem(BanUninstallSettings.USE_LIST, R.string.ui_ban_use_list, R.string.ui_ban_use_list_hint, masterManaged = false),
+    PageEntryItem(R.string.ui_ban_apps, "com.rikumi.colorosmod.BanAppsActivity"),
 )
 
 private val SYSTEM_FONTS: List<SettingsItem> = listOf(

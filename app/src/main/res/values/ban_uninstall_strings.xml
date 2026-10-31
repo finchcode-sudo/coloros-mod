@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ui_ban_uninstall_group">禁止卸载与清除数据</string>
+    <string name="ui_ban_uninstall">禁止卸载应用</string>
+    <string name="ui_ban_uninstall_hint">拦截卸载请求，被保护的应用无法卸载</string>
+    <string name="ui_ban_clear_data">禁止清除应用数据</string>
+    <string name="ui_ban_clear_data_hint">拦截清除数据请求，被保护的应用无法清除数据</string>
+    <string name="ui_ban_use_list">仅保护列表中的应用</string>
+    <string name="ui_ban_use_list_hint">关闭时保护所有应用；开启后只保护列表中的应用</string>
+    <string name="ui_ban_apps">禁止卸载应用列表</string>
+</resources>

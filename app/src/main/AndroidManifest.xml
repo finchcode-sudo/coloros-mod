@@ -88,6 +88,11 @@
             android:windowSoftInputMode="adjustResize" />
 
         <activity
+            android:name=".BanAppsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ColorOSMod" />
+
+        <activity
             android:name=".clockseconds.settings.ModuleSettingsActivity"
             android:exported="false"
             android:label="@string/module_name"

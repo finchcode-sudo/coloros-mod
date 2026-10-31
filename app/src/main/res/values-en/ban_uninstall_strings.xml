@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ui_ban_uninstall_group">Uninstall and data protection</string>
+    <string name="ui_ban_uninstall">Block app uninstall</string>
+    <string name="ui_ban_uninstall_hint">Protected apps cannot be uninstalled</string>
+    <string name="ui_ban_clear_data">Block clearing app data</string>
+    <string name="ui_ban_clear_data_hint">Protected apps cannot have their data cleared</string>
+    <string name="ui_ban_use_list">Protect listed apps only</string>
+    <string name="ui_ban_use_list_hint">When off, all apps are protected; when on, only apps in the list are</string>
+    <string name="ui_ban_apps">Protected app list</string>
+</resources>

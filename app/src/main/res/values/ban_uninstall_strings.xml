@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="ui_ban_uninstall_group">禁止卸载与清除数据</string>
+    <string name="ui_ban_entry">禁止卸载</string>
     <string name="ui_ban_uninstall">禁止卸载应用</string>
     <string name="ui_ban_uninstall_hint">拦截卸载请求，被保护的应用无法卸载</string>
-    <string name="ui_ban_clear_data">禁止清除应用数据</string>
+    <string name="ui_ban_clear_data">禁止清除数据</string>
     <string name="ui_ban_clear_data_hint">拦截清除数据请求，被保护的应用无法清除数据</string>
-    <string name="ui_ban_use_list">仅保护列表中的应用</string>
-    <string name="ui_ban_use_list_hint">关闭时保护所有应用；开启后只保护列表中的应用</string>
-    <string name="ui_ban_apps">禁止卸载应用列表</string>
+    <string name="ui_ban_use_list">按需禁止</string>
+    <string name="ui_ban_use_list_hint">开启后只保护列表中的应用，关闭则保护所有应用</string>
+    <string name="ui_ban_apps">保护应用列表</string>
+    <string name="ui_ban_status">模块状态</string>
+    <string name="ui_ban_status_working">工作中</string>
+    <string name="ui_ban_status_idle">未工作</string>
+    <string name="ui_ban_status_hint">需在 LSPosed 勾选「系统框架」作用域后重启 Zygote，且至少开启一个开关</string>
+    <string name="ui_ban_section_function">功能配置</string>
+    <string name="ui_ban_section_advanced">高级</string>
+    <string name="ui_ban_records">查看操作记录</string>
+    <string name="ui_ban_records_clear">清空</string>
+    <string name="ui_ban_records_empty">暂无记录</string>
+    <string name="ui_ban_op_uninstall">卸载</string>
+    <string name="ui_ban_op_clear">清除数据</string>
+    <string name="ui_ban_result_blocked">已拦截</string>
+    <string name="ui_ban_result_allowed">已允许</string>
 </resources>

@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="ui_ban_uninstall_group">Uninstall and data protection</string>
+    <string name="ui_ban_entry">Uninstall protection</string>
     <string name="ui_ban_uninstall">Block app uninstall</string>
     <string name="ui_ban_uninstall_hint">Protected apps cannot be uninstalled</string>
-    <string name="ui_ban_clear_data">Block clearing app data</string>
+    <string name="ui_ban_clear_data">Block clearing data</string>
     <string name="ui_ban_clear_data_hint">Protected apps cannot have their data cleared</string>
-    <string name="ui_ban_use_list">Protect listed apps only</string>
-    <string name="ui_ban_use_list_hint">When off, all apps are protected; when on, only apps in the list are</string>
+    <string name="ui_ban_use_list">Protect on demand</string>
+    <string name="ui_ban_use_list_hint">When on, only apps in the list are protected; when off, all apps are</string>
     <string name="ui_ban_apps">Protected app list</string>
+    <string name="ui_ban_status">Module status</string>
+    <string name="ui_ban_status_working">Working</string>
+    <string name="ui_ban_status_idle">Not working</string>
+    <string name="ui_ban_status_hint">Enable the System Framework scope in LSPosed, restart Zygote and turn on at least one switch</string>
+    <string name="ui_ban_section_function">Features</string>
+    <string name="ui_ban_section_advanced">Advanced</string>
+    <string name="ui_ban_records">View operation log</string>
+    <string name="ui_ban_records_clear">Clear</string>
+    <string name="ui_ban_records_empty">No records</string>
+    <string name="ui_ban_op_uninstall">Uninstall</string>
+    <string name="ui_ban_op_clear">Clear data</string>
+    <string name="ui_ban_result_blocked">Blocked</string>
+    <string name="ui_ban_result_allowed">Allowed</string>
 </resources>

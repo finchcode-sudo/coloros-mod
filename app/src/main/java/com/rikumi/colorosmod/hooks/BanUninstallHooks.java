@@ -49,6 +49,7 @@ public final class BanUninstallHooks {
     private BanUninstallHooks() {}
 
     public static void hook(XC_LoadPackage.LoadPackageParam lpparam) {
+        XposedBridge.log("BanUninstall: hook() start sdk=" + Build.VERSION.SDK_INT);
         ClassLoader cl = lpparam.classLoader;
 
         Class<?> pms = XposedHelpers.findClassIfExists(PMS, cl);
@@ -86,6 +87,7 @@ public final class BanUninstallHooks {
         String pmClearHost = Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU ? PMS_IMPL : PMS;
         hookFirst(XposedHelpers.findClassIfExists(pmClearHost, cl), "clearApplicationUserData", clearPm);
         hookFirst(XposedHelpers.findClassIfExists(AMS, cl), "clearApplicationUserData", clearAm);
+        XposedBridge.log("BanUninstall: hooks installed");
         markAlive();
     }
 
@@ -97,11 +99,18 @@ public final class BanUninstallHooks {
                     Context context = systemContext();
                     if (context != null) {
                         int boot = Settings.Global.getInt(context.getContentResolver(), Settings.Global.BOOT_COUNT, -1);
-                        if (boot >= 0 && Settings.Global.putString(context.getContentResolver(),
-                                BanUninstallSettings.ALIVE, String.valueOf(boot))) return;
+                        if (boot >= 0) {
+                            boolean ok = Settings.Global.putString(context.getContentResolver(),
+                                    BanUninstallSettings.ALIVE, String.valueOf(boot));
+                            XposedBridge.log("BanUninstall: mark alive boot=" + boot + " ok=" + ok);
+                            String now = Settings.Global.getString(context.getContentResolver(), BanUninstallSettings.ALIVE);
+                            if (String.valueOf(boot).equals(now)) return;
+                        }
                     }
                     Thread.sleep(5000);
-                } catch (Throwable ignored) {
+                } catch (Throwable error) {
+                    if (i % 12 == 0) XposedBridge.log("BanUninstall: mark alive error " + error);
+                    try { Thread.sleep(5000); } catch (InterruptedException ignored) { return; }
                 }
             }
         }, "ban-uninstall-alive");

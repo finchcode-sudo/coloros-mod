@@ -1,6 +1,7 @@
 package com.rikumi.colorosmod
 
 import android.content.Context
+import android.content.pm.ApplicationInfo
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.widget.Toast
@@ -28,6 +29,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -46,23 +48,41 @@ import top.yukonga.miuix.kmp.icon.MiuixIcons
 import top.yukonga.miuix.kmp.icon.extended.Back
 import top.yukonga.miuix.kmp.theme.MiuixTheme
 
-private data class BanAppItem(val pkg: String, val name: String, val icon: Bitmap?)
+private data class BanAppItem(val pkg: String, val name: String)
 
-private fun loadBanApps(context: Context, includeSystem: Boolean): List<BanAppItem>? {
-    val output = runRoot("cmd package list packages ${if (includeSystem) "" else "-3"} --user current") ?: return null
+// 图标按需加载并缓存(参考 SDK Monitor): 列表先出文字, 图标在行进入屏幕时才取。
+private val banIconCache = java.util.concurrent.ConcurrentHashMap<String, Bitmap>()
+
+private fun loadBanIcon(context: Context, pkg: String): Bitmap? {
+    banIconCache[pkg]?.let { return it }
+    return runCatching {
+        val drawable = context.packageManager.getApplicationIcon(pkg)
+        val bitmap = Bitmap.createBitmap(96, 96, Bitmap.Config.ARGB_8888)
+        drawable.setBounds(0, 0, 96, 96)
+        drawable.draw(Canvas(bitmap))
+        banIconCache[pkg] = bitmap
+        bitmap
+    }.getOrNull()
+}
+
+// 直接用 PackageManager 取应用列表(需要 QUERY_ALL_PACKAGES), 不再经过 root 命令。
+private fun loadBanApps(context: Context, includeSystem: Boolean): List<BanAppItem> {
     val pm = context.packageManager
     val collator = Collator.getInstance(context.resources.configuration.locales[0])
-    return output.lineSequence().map { it.trim() }.filter { it.startsWith("package:") }
-        .map { it.removePrefix("package:") }.distinct().map { pkg ->
-            runCatching {
-                @Suppress("DEPRECATION") val info = pm.getApplicationInfo(pkg, 0)
-                val drawable = info.loadIcon(pm)
-                val bitmap = Bitmap.createBitmap(96, 96, Bitmap.Config.ARGB_8888)
-                drawable.setBounds(0, 0, 96, 96)
-                drawable.draw(Canvas(bitmap))
-                BanAppItem(pkg, info.loadLabel(pm).toString(), bitmap)
-            }.getOrElse { BanAppItem(pkg, pkg, null) }
-        }.sortedWith { a, b ->
+    val systemMask = ApplicationInfo.FLAG_SYSTEM or ApplicationInfo.FLAG_UPDATED_SYSTEM_APP
+    @Suppress("DEPRECATION")
+    var infos = pm.getInstalledApplications(0)
+    if (infos.isEmpty()) {
+        // 兜底: 没有包可见性时回退到 root 命令。
+        val output = runRoot("cmd package list packages ${if (includeSystem) "" else "-3"} --user current").orEmpty()
+        infos = output.lineSequence().map { it.trim() }.filter { it.startsWith("package:") }
+            .mapNotNull { runCatching { pm.getApplicationInfo(it.removePrefix("package:"), 0) }.getOrNull() }.toList()
+    }
+    return infos.asSequence()
+        .filter { includeSystem || it.flags and systemMask == 0 }
+        .distinctBy { it.packageName }
+        .map { BanAppItem(it.packageName, runCatching { pm.getApplicationLabel(it).toString().trim() }.getOrDefault(it.packageName)) }
+        .sortedWith { a, b ->
             val result = collator.compare(a.name, b.name)
             if (result == 0) a.pkg.compareTo(b.pkg) else result
         }.toList()
@@ -81,7 +101,7 @@ internal fun BanAppsScreen(context: Context, onBack: () -> Unit) {
 
     LaunchedEffect(showSystem) {
         apps = null
-        val result = withContext(Dispatchers.IO) { runCatching { loadBanApps(context, showSystem) }.getOrNull() }
+        val result = withContext(Dispatchers.Default) { runCatching { loadBanApps(context, showSystem) }.getOrNull() }
         if (result == null) Toast.makeText(context, context.getString(R.string.ui_read_apps_failed), Toast.LENGTH_SHORT).show()
         apps = result ?: emptyList()
     }
@@ -151,7 +171,10 @@ internal fun BanAppsScreen(context: Context, onBack: () -> Unit) {
                                 .padding(horizontal = 16.dp, vertical = 10.dp),
                             verticalAlignment = Alignment.CenterVertically,
                         ) {
-                            app.icon?.let { Image(it.asImageBitmap(), null, Modifier.size(40.dp).clip(RoundedCornerShape(10.dp))) }
+                            val icon by produceState<Bitmap?>(banIconCache[app.pkg], app.pkg) {
+                                if (value == null) value = withContext(Dispatchers.IO) { loadBanIcon(context, app.pkg) }
+                            }
+                            icon?.let { Image(it.asImageBitmap(), null, Modifier.size(40.dp).clip(RoundedCornerShape(10.dp))) }
                                 ?: Box(Modifier.size(40.dp).background(MiuixTheme.colorScheme.onSurfaceVariantSummary.copy(alpha = 0.3f), RoundedCornerShape(10.dp)))
                             Column(Modifier.weight(1f).padding(start = 12.dp, end = 8.dp)) {
                                 BasicText(app.name, style = MiuixTheme.textStyles.body1.copy(color = MiuixTheme.colorScheme.onSurface))

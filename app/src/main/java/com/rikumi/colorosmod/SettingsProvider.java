@@ -60,6 +60,7 @@ public class SettingsProvider extends ContentProvider {
 
     @Override
     public android.os.Bundle call(String method, String arg, android.os.Bundle extras) {
+        if ("ban_alive".equals(method) || "ban_record".equals(method)) return banReport(method, arg);
         if (!LAUNCHER_STARTUP_CLAIM.equals(method) && !LAUNCHER_STARTUP_RELEASE.equals(method))
             return super.call(method, arg, extras);
         Context context = getContext();
@@ -88,6 +89,33 @@ public class SettingsProvider extends ContentProvider {
             result.putBoolean("claimed", claimed);
             return result;
         }
+    }
+
+    public static final String BAN_STATE = "ban_uninstall_state";
+    private static final int BAN_RECORD_LIMIT = 80;
+
+    // system_server 里的"禁止卸载"hook 通过这里报告安装结果和操作记录; 只接受系统进程调用。
+    private android.os.Bundle banReport(String method, String arg) {
+        Context context = getContext();
+        if (context == null || arg == null) return null;
+        if (android.os.Binder.getCallingUid() != android.os.Process.SYSTEM_UID)
+            throw new SecurityException("ban report requires system uid");
+        SharedPreferences state = context.createDeviceProtectedStorageContext()
+                .getSharedPreferences(BAN_STATE, Context.MODE_PRIVATE);
+        synchronized (BAN_STATE) {
+            if ("ban_alive".equals(method)) {
+                state.edit().putString("alive", arg).commit();
+            } else {
+                java.util.ArrayList<String> lines = new java.util.ArrayList<>();
+                lines.add(arg);
+                String old = state.getString("records", "");
+                for (String item : old.split("\n")) {
+                    if (!item.isEmpty() && lines.size() < BAN_RECORD_LIMIT) lines.add(item);
+                }
+                state.edit().putString("records", android.text.TextUtils.join("\n", lines)).commit();
+            }
+        }
+        return new android.os.Bundle();
     }
 
     @Override

@@ -23,4 +23,6 @@
     <string name="ui_ban_result_blocked">Blocked</string>
     <string name="ui_ban_result_allowed">Allowed</string>
     <string name="ui_ban_search">Search apps</string>
+    <string name="ui_ban_status_none">No report from the system framework yet: the hook is not loaded, or the scope/restart did not take effect</string>
+    <string name="ui_ban_status_installed">%1$d interception points installed</string>
 </resources>

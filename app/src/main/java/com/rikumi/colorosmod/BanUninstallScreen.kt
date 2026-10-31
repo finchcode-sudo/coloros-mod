@@ -50,17 +50,26 @@ internal data class BanRecord(
 
 private const val CLEARED_AT_KEY = "ban_uninstall_records_cleared_at"
 
-// 本次开机内 system_server 里的 hook 是否已经加载过(由 hook 写入开机序号)。
-internal fun banModuleWorking(context: Context): Boolean = runCatching {
-    val resolver = context.contentResolver
-    val boot = Settings.Global.getInt(resolver, Settings.Global.BOOT_COUNT, -1)
-    boot >= 0 && Settings.Global.getString(resolver, BanUninstallSettings.ALIVE) == boot.toString()
-}.getOrDefault(false)
+private fun banState(context: Context) = context.createDeviceProtectedStorageContext()
+    .getSharedPreferences(SettingsProvider.BAN_STATE, Context.MODE_PRIVATE)
+
+// system_server 里的 hook 的报告: 开机序号 / 安装的拦截点数 / 失败说明。
+internal data class BanStatus(val working: Boolean, val detail: String)
+
+internal fun banStatus(context: Context): BanStatus {
+    val raw = runCatching { banState(context).getString("alive", null) }.getOrNull()
+        ?: return BanStatus(false, context.getString(R.string.ui_ban_status_none))
+    val parts = raw.split('\n', limit = 3)
+    val boot = runCatching { Settings.Global.getInt(context.contentResolver, Settings.Global.BOOT_COUNT, -1) }.getOrDefault(-1)
+    val installed = parts.getOrNull(1)?.toIntOrNull() ?: 0
+    val note = parts.getOrNull(2).orEmpty()
+    val detail = context.getString(R.string.ui_ban_status_installed, installed) + if (note.isEmpty()) "" else "\n$note"
+    return BanStatus(parts.getOrNull(0)?.toIntOrNull() == boot && boot >= 0 && installed > 0, detail)
+}
 
 internal fun readBanRecords(context: Context): List<BanRecord> {
     val clearedAt = context.settingsPrefs().getLong(CLEARED_AT_KEY, 0L)
-    val raw = runCatching { Settings.Global.getString(context.contentResolver, BanUninstallSettings.RECORDS) }
-        .getOrNull().orEmpty()
+    val raw = runCatching { banState(context).getString("records", "") }.getOrNull().orEmpty()
     return raw.lineSequence().mapNotNull { line ->
         val parts = line.split('\t')
         val time = parts.getOrNull(0)?.toLongOrNull()
@@ -80,7 +89,8 @@ internal fun BanUninstallScreen(
     var uninstall by remember { mutableStateOf(prefs.getBoolean(BanUninstallSettings.UNINSTALL, false)) }
     var clearData by remember { mutableStateOf(prefs.getBoolean(BanUninstallSettings.CLEAR_DATA, false)) }
     var useList by remember { mutableStateOf(prefs.getBoolean(BanUninstallSettings.USE_LIST, false)) }
-    val working = remember { banModuleWorking(context) }
+    val status = remember { banStatus(context) }
+    val working = status.working
     val listState = rememberLazyListState()
     val overscroll = remember { mutableFloatStateOf(0f) }
 
@@ -120,6 +130,8 @@ internal fun BanUninstallScreen(
                         style = MiuixTheme.textStyles.title3.copy(color = MiuixTheme.colorScheme.onSurface))
                     BasicText(context.getString(if (working) R.string.ui_ban_status_working else R.string.ui_ban_status_idle),
                         style = MiuixTheme.textStyles.body2.copy(color = MiuixTheme.colorScheme.onSurfaceVariantSummary))
+                    BasicText(status.detail,
+                        style = MiuixTheme.textStyles.body2.copy(color = MiuixTheme.colorScheme.onSurfaceVariantSummary, fontSize = 12.sp))
                     if (!working) BasicText(context.getString(R.string.ui_ban_status_hint),
                         style = MiuixTheme.textStyles.body2.copy(color = MiuixTheme.colorScheme.onSurfaceVariantSummary, fontSize = 12.sp))
                 }

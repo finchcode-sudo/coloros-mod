@@ -23,4 +23,6 @@
     <string name="ui_ban_result_blocked">已拦截</string>
     <string name="ui_ban_result_allowed">已允许</string>
     <string name="ui_ban_search">搜索应用</string>
+    <string name="ui_ban_status_none">尚未收到系统框架里的报告：hook 没有加载，或作用域/重启未生效</string>
+    <string name="ui_ban_status_installed">已安装 %1$d 个拦截点</string>
 </resources>

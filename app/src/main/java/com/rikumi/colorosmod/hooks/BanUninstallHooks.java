@@ -9,8 +9,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Process;
 import android.content.pm.ApplicationInfo;
+import android.net.Uri;
 import android.provider.Settings;
-import android.text.TextUtils;
 
 import com.rikumi.colorosmod.BanUninstallSettings;
 import com.rikumi.colorosmod.XposedInit;
@@ -21,14 +21,13 @@ import com.rikumi.colorosmod.xposed.XposedHelpers;
 
 import java.lang.reflect.Member;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
  * system_server: 禁止卸载应用 / 禁止清除应用数据(移植自 BanUninstall, 作者 tinyhai)。
  * 开关与应用列表通过 SettingsProvider 快照读取, 每次调用时判断, 改设置后无需重启。
- * 操作记录写入 Settings.Global(BanUninstallSettings.RECORDS), 设置页直接读取。
+ * 操作记录写入 SettingsProvider.call 转存, 设置页读取。
  * 未移植: 确认弹窗、独立密码。
  */
 public final class BanUninstallHooks {
@@ -43,8 +42,8 @@ public final class BanUninstallHooks {
         thread.setDaemon(true);
         return thread;
     });
-    private static final ArrayList<String> RECORDS = new ArrayList<>();
-    private static boolean recordsLoaded;
+    // 安装结果说明, 随"工作状态"一起报告给设置页, 方便不看日志也能知道哪一步失败。
+    private static final StringBuilder DETAIL = new StringBuilder();
 
     private BanUninstallHooks() {}
 
@@ -70,7 +69,7 @@ public final class BanUninstallHooks {
                 installed += hookAll(pms, "deleteExistingPackageAsUser", delete);
             }
         } else {
-            XposedBridge.log("BanUninstall: PackageManagerService not found");
+            fail("PackageManagerService 未找到");
         }
 
         XC_MethodHook clearPm = new XC_MethodHook() {
@@ -89,49 +88,67 @@ public final class BanUninstallHooks {
         installed += hookFirst(XposedHelpers.findClassIfExists(pmClearHost, cl), "clearApplicationUserData", clearPm);
         installed += hookFirst(XposedHelpers.findClassIfExists(AMS, cl), "clearApplicationUserData", clearAm);
         XposedBridge.log("BanUninstall: hooks installed count=" + installed);
-        // 只要有一个拦截点装上就标记"工作中"。
-        if (installed > 0) markAlive();
+        report(installed);
+    }
+
+    private static void fail(String message) {
+        XposedBridge.log("BanUninstall: " + message);
+        synchronized (DETAIL) {
+            if (DETAIL.length() < 400) DETAIL.append(DETAIL.length() > 0 ? "；" : "").append(message);
+        }
     }
 
     private static int hookAll(Class<?> clazz, String name, XC_MethodHook callback) {
         try {
             return XposedHelpers.hookAllMethods(clazz, name, callback).size();
         } catch (Throwable error) {
-            XposedBridge.log("BanUninstall: hook " + clazz.getName() + "#" + name + " failed: " + error);
+            fail(clazz.getSimpleName() + "#" + name + " 失败: " + error);
             return 0;
         }
     }
 
-    // 系统设置提供者就绪后写入本次开机序号, 设置页据此显示"工作中"。
-    private static void markAlive() {
+    private static final Uri PROVIDER = Uri.parse("content://com.rikumi.colorosmod.settings");
+
+    private static boolean callProvider(Context context, String method, String arg) {
+        try {
+            return context.getContentResolver().call(PROVIDER, method, arg, null) != null;
+        } catch (Throwable error) {
+            return false;
+        }
+    }
+
+    // 把安装结果经 mod 的 SettingsProvider 报告给设置页(提供者进程可能还没起来, 反复重试)。
+    private static void report(final int installed) {
         Thread thread = new Thread(() -> {
             for (int i = 0; i < 120; i++) {
                 try {
                     Context context = systemContext();
                     if (context != null) {
                         int boot = Settings.Global.getInt(context.getContentResolver(), Settings.Global.BOOT_COUNT, -1);
-                        if (boot >= 0) {
-                            boolean ok = Settings.Global.putString(context.getContentResolver(),
-                                    BanUninstallSettings.ALIVE, String.valueOf(boot));
-                            XposedBridge.log("BanUninstall: mark alive boot=" + boot + " ok=" + ok);
-                            String now = Settings.Global.getString(context.getContentResolver(), BanUninstallSettings.ALIVE);
-                            if (String.valueOf(boot).equals(now)) return;
+                        String detail;
+                        synchronized (DETAIL) {
+                            detail = DETAIL.toString();
+                        }
+                        String arg = boot + "\n" + installed + "\n" + detail;
+                        if (callProvider(context, "ban_alive", arg)) {
+                            XposedBridge.log("BanUninstall: reported installed=" + installed);
+                            return;
                         }
                     }
                     Thread.sleep(5000);
                 } catch (Throwable error) {
-                    if (i % 12 == 0) XposedBridge.log("BanUninstall: mark alive error " + error);
                     try { Thread.sleep(5000); } catch (InterruptedException ignored) { return; }
                 }
             }
-        }, "ban-uninstall-alive");
+            XposedBridge.log("BanUninstall: report to provider failed");
+        }, "ban-uninstall-report");
         thread.setDaemon(true);
         thread.start();
     }
 
     private static int hookFirst(Class<?> clazz, String name, XC_MethodHook callback) {
         if (clazz == null) {
-            XposedBridge.log("BanUninstall: class missing for " + name);
+            fail(name + " 所在的类未找到");
             return 0;
         }
         for (Method method : clazz.getDeclaredMethods()) {
@@ -140,12 +157,12 @@ public final class BanUninstallHooks {
                     XposedBridge.hookMethod(method, callback);
                     return 1;
                 } catch (Throwable error) {
-                    XposedBridge.log("BanUninstall: hook " + clazz.getName() + "#" + name + " failed: " + error);
+                    fail(clazz.getSimpleName() + "#" + name + " 失败: " + error);
                     return 0;
                 }
             }
         }
-        XposedBridge.log("BanUninstall: method missing " + clazz.getName() + "#" + name);
+        fail(clazz.getSimpleName() + "#" + name + " 方法未找到");
         return 0;
     }
 
@@ -277,20 +294,7 @@ public final class BanUninstallHooks {
         WORKER.execute(() -> {
             try {
                 Context context = systemContext();
-                if (context == null) return;
-                synchronized (RECORDS) {
-                    if (!recordsLoaded) {
-                        String old = Settings.Global.getString(context.getContentResolver(), BanUninstallSettings.RECORDS);
-                        if (old != null && !old.isEmpty()) {
-                            for (String item : old.split("\n")) if (!item.isEmpty()) RECORDS.add(item);
-                        }
-                        recordsLoaded = true;
-                    }
-                    RECORDS.add(0, line);
-                    while (RECORDS.size() > RECORD_LIMIT) RECORDS.remove(RECORDS.size() - 1);
-                    Settings.Global.putString(context.getContentResolver(), BanUninstallSettings.RECORDS,
-                            TextUtils.join("\n", RECORDS));
-                }
+                if (context != null) callProvider(context, "ban_record", line);
             } catch (Throwable error) {
                 XposedBridge.log(error);
             }

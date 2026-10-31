@@ -22,4 +22,5 @@
     <string name="ui_ban_op_clear">Clear data</string>
     <string name="ui_ban_result_blocked">Blocked</string>
     <string name="ui_ban_result_allowed">Allowed</string>
+    <string name="ui_ban_search">Search apps</string>
 </resources>

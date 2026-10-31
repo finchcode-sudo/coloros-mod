@@ -22,4 +22,5 @@
     <string name="ui_ban_op_clear">清除数据</string>
     <string name="ui_ban_result_blocked">已拦截</string>
     <string name="ui_ban_result_allowed">已允许</string>
+    <string name="ui_ban_search">搜索应用</string>
 </resources>

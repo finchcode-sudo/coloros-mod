@@ -63,11 +63,7 @@ class BanAppsActivity : ComponentActivity() {
                     ) {
                         CouixOverscrollHost {
                             when (page) {
-                                1 -> HiddenAppsScreen(
-                                    context = context,
-                                    onBack = { page = 0 },
-                                    banApplications = true,
-                                )
+                                1 -> BanAppsScreen(context = context, onBack = { page = 0 })
                                 2 -> BanRecordsScreen(context = context, onBack = { page = 0 })
                                 else -> BanUninstallScreen(
                                     context = context,

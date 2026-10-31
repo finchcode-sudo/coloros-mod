@@ -52,6 +52,7 @@ public final class BanUninstallHooks {
         XposedBridge.log("BanUninstall: hook() start sdk=" + Build.VERSION.SDK_INT);
         ClassLoader cl = lpparam.classLoader;
 
+        int installed = 0;
         Class<?> pms = XposedHelpers.findClassIfExists(PMS, cl);
         if (pms != null) {
             XC_MethodHook delete = new XC_MethodHook() {
@@ -61,12 +62,12 @@ public final class BanUninstallHooks {
                 }
             };
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                XposedHelpers.hookAllMethods(pms, "deletePackageVersioned", delete);
+                installed += hookAll(pms, "deletePackageVersioned", delete);
             } else {
-                XposedHelpers.hookAllMethods(pms, "deletePackage", delete);
+                installed += hookAll(pms, "deletePackage", delete);
             }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                XposedHelpers.hookAllMethods(pms, "deleteExistingPackageAsUser", delete);
+                installed += hookAll(pms, "deleteExistingPackageAsUser", delete);
             }
         } else {
             XposedBridge.log("BanUninstall: PackageManagerService not found");
@@ -85,10 +86,20 @@ public final class BanUninstallHooks {
             }
         };
         String pmClearHost = Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU ? PMS_IMPL : PMS;
-        hookFirst(XposedHelpers.findClassIfExists(pmClearHost, cl), "clearApplicationUserData", clearPm);
-        hookFirst(XposedHelpers.findClassIfExists(AMS, cl), "clearApplicationUserData", clearAm);
-        XposedBridge.log("BanUninstall: hooks installed");
-        markAlive();
+        installed += hookFirst(XposedHelpers.findClassIfExists(pmClearHost, cl), "clearApplicationUserData", clearPm);
+        installed += hookFirst(XposedHelpers.findClassIfExists(AMS, cl), "clearApplicationUserData", clearAm);
+        XposedBridge.log("BanUninstall: hooks installed count=" + installed);
+        // 只要有一个拦截点装上就标记"工作中"。
+        if (installed > 0) markAlive();
+    }
+
+    private static int hookAll(Class<?> clazz, String name, XC_MethodHook callback) {
+        try {
+            return XposedHelpers.hookAllMethods(clazz, name, callback).size();
+        } catch (Throwable error) {
+            XposedBridge.log("BanUninstall: hook " + clazz.getName() + "#" + name + " failed: " + error);
+            return 0;
+        }
     }
 
     // 系统设置提供者就绪后写入本次开机序号, 设置页据此显示"工作中"。
@@ -118,22 +129,24 @@ public final class BanUninstallHooks {
         thread.start();
     }
 
-    private static void hookFirst(Class<?> clazz, String name, XC_MethodHook callback) {
+    private static int hookFirst(Class<?> clazz, String name, XC_MethodHook callback) {
         if (clazz == null) {
             XposedBridge.log("BanUninstall: class missing for " + name);
-            return;
+            return 0;
         }
         for (Method method : clazz.getDeclaredMethods()) {
             if (method.getName().equals(name)) {
                 try {
                     XposedBridge.hookMethod(method, callback);
+                    return 1;
                 } catch (Throwable error) {
                     XposedBridge.log("BanUninstall: hook " + clazz.getName() + "#" + name + " failed: " + error);
+                    return 0;
                 }
-                return;
             }
         }
         XposedBridge.log("BanUninstall: method missing " + clazz.getName() + "#" + name);
+        return 0;
     }
 
     private static boolean isProtected(String packageName) {

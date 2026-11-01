@@ -1,5 +1,6 @@
 package com.rikumi.colorosmod
 
+import com.rikumi.colorosmod.hooks.UnlockGmsHooks
 import com.rikumi.colorosmod.hooks.AboutCardStyleResolver
 import kotlin.math.roundToInt
 import androidx.compose.ui.graphics.toArgb
@@ -123,6 +124,10 @@ class MainActivity : ComponentActivity() {
     companion object {
         internal val scopeObservers = java.util.concurrent.CopyOnWriteArraySet<Runnable>()
         private val listenerRegistered = AtomicBoolean(false)
+        // 实时激活态: 框架服务一绑定即为 true, 无需重启手机/重开应用
+        internal val moduleActive = mutableStateOf(false)
+        // 等待绑定的宽限期结束后才显示"未激活"提示, 避免启动瞬间闪一下
+        internal val activationGraceOver = mutableStateOf(false)
         internal val xposedServices: MutableSet<XposedService> =
             java.util.Collections.newSetFromMap(ConcurrentHashMap<XposedService, Boolean>())
     }
@@ -162,18 +167,22 @@ class MainActivity : ComponentActivity() {
             XposedServiceHelper.registerListener(object : XposedServiceHelper.OnServiceListener {
                 override fun onServiceBind(service: XposedService) {
                     xposedServices.add(service)
+                    moduleActive.value = true
                     val context = applicationContext
                     SystemFontStore.enqueue { SystemFontStore.sync(context, service) }
                     scopeObservers.forEach { it.run() }
                 }
                 override fun onServiceDied(service: XposedService) {
                     xposedServices.remove(service)
+                    moduleActive.value = xposedServices.isNotEmpty()
                     scopeObservers.forEach { it.run() }
                     activeHotReloadBatches.forEach { it.serviceDied(service) }
                 }
             })
         }
-        checkEnvironment(this)
+        if (!moduleActive.value) {
+            window.decorView.postDelayed({ activationGraceOver.value = true }, 1500)
+        } else activationGraceOver.value = true
         setContent {
             val context = LocalContext.current
             val navigationEventOwner = remember {
@@ -483,6 +492,8 @@ private val PURIFICATION: List<SettingsItem> = listOf(
     PageEntryItem(R.string.ui_text_menu_entry, "com.rikumi.colorosmod.textmenu.MainActivity"),
     GroupTitleItem(R.string.ui_ban_uninstall_group),
     PageEntryItem(R.string.ui_ban_entry, "com.rikumi.colorosmod.BanAppsActivity"),
+    GroupTitleItem(R.string.ui_unlock_gms_group),
+    SwitchItem(UnlockGmsHooks.KEY, R.string.ui_unlock_gms, R.string.ui_unlock_gms_hint, masterManaged = false, defaultEnabled = true),
 )
 
 private val SYSTEM_FONTS: List<SettingsItem> = listOf(
@@ -878,6 +889,7 @@ private fun HomeScreen(
     // 回弹位移: 共享给标题栏分割线, 让不可滚动页面上滑回弹时分割线也出现。
     val overscrollOffset = remember { mutableFloatStateOf(0f) }
     // 系统信息与背景样式一起发布，避免先显示占位背景再切换。
+    val statusLines = rememberModuleStatusLines()
     var headerInfo by remember { mutableStateOf<Pair<Int, String?>?>(null) }
     LaunchedEffect(Unit) {
         headerInfo = withContext(Dispatchers.IO) {
@@ -912,7 +924,9 @@ private fun HomeScreen(
                 .padding(padding)
                 .couixOverscroll(listState, overscrollOffset),
         ) {
-            if (missingScopes) {
+            if (MainActivity.activationGraceOver.value && !MainActivity.moduleActive.value) {
+                item(key = "module_inactive") { ModuleInactiveCard() }
+            } else if (missingScopes) {
                 item(key = "scope_warning") { ScopeWarningCard() }
             }
             item {
@@ -929,6 +943,7 @@ private fun HomeScreen(
                             model = deviceName(ctx),
                             system = headerInfo?.second,
                             contentReady = headerInfo != null,
+                            statusLines = statusLines,
                             shape = RoundedCornerShape(
                                 topStart = COUIX_CARD_CORNER,
                                 topEnd = COUIX_CARD_CORNER,

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ui_unlock_gms_group">Google 服務</string>
+    <string name="ui_unlock_gms">解鎖國區 GMS</string>
+    <string name="ui_unlock_gms_hint">对 Google 服务和 Play 商店隐藏国行标记，解除国区限制；需在 LSPosed 勾选 com.google.android.gms 与 com.android.vending 作用域，并强制停止这两个应用一次；首页状态行可查看是否生效</string>
+</resources>

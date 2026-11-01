@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="ui_scope_missing">Some scopes are not selected. Tap to select them.</string>
+    <string name="ui_module_inactive">Module not active. Enable it in LSPosed (updates automatically).</string>
+    <string name="ui_module_active">Module active</string>
+    <string name="ui_module_inactive_short">Module inactive</string>
+    <string name="ui_module_version">Module version: %1$s</string>
+    <string name="ui_root_source">Root source: %1$s</string>
+    <string name="ui_framework_version">Framework version: %1$s</string>
+    <string name="ui_scope_request_title">Request missing scopes</string>
+    <string name="ui_scope_request_hint">The module is active but these scopes are missing. Tap OK to ask the framework for them.</string>
+    <string name="ui_scope_request_confirm">Request</string>
+    <string name="ui_scope_requesting">Requesting</string>
+    <string name="ui_scope_system">System framework</string>
+    <string name="ui_scope_approved">Approved: %1$s</string>
+    <string name="ui_scope_denied">Denied: %1$s</string>
+    <string name="ui_scope_timeout">Timed out: %1$s</string>
+    <string name="ui_scope_failed">Failed: %1$s</string>
+    <string name="ui_scope_request_unsupported">Framework does not support dynamic requests. Select them in LSPosed.</string>
 </resources>

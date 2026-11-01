@@ -667,6 +667,7 @@ internal fun CouixDeviceHeader(
     model: String,
     system: String?,
     contentReady: Boolean = true,
+    statusLines: List<String> = emptyList(),
     modifier: Modifier = Modifier,
     shape: Shape = RoundedCornerShape(COUIX_CARD_CORNER),
 ) {
@@ -739,7 +740,7 @@ internal fun CouixDeviceHeader(
         Box(
             modifier = Modifier
                 .matchParentSize()
-                .offset(y = -COUIX_HEADER_MODEL_LIFT),
+                .offset(y = -(if (statusLines.isNotEmpty()) 44.dp else COUIX_HEADER_MODEL_LIFT)),
             contentAlignment = Alignment.Center,
         ) {
             BasicText(
@@ -749,6 +750,26 @@ internal fun CouixDeviceHeader(
                     fontWeight = FontWeight.Medium,
                 ),
             )
+        }
+        // 模块状态: 位于设备名与系统名之间。
+        if (statusLines.isNotEmpty()) {
+            Column(
+                modifier = Modifier
+                    .matchParentSize()
+                    .padding(top = 88.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                statusLines.forEach {
+                    BasicText(
+                        text = it,
+                        style = androidx.compose.ui.text.TextStyle(
+                            color = textColor.copy(alpha = 0.85f),
+                            fontSize = 12.sp,
+                            lineHeight = 16.sp,
+                        ),
+                    )
+                }
+            }
         }
         // 系统名贴横幅底边。
         if (!system.isNullOrEmpty()) {

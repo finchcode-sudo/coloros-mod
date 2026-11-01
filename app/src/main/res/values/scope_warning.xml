@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="ui_scope_missing">有作用域未勾选，请前往勾选</string>
+    <string name="ui_module_inactive">模块未激活，请在 LSPosed 中启用（启用后此处自动更新）</string>
+    <string name="ui_module_active">模块已激活</string>
+    <string name="ui_module_inactive_short">模块未激活</string>
+    <string name="ui_module_version">模块版本: %1$s</string>
+    <string name="ui_root_source">Root来源: %1$s</string>
+    <string name="ui_framework_version">框架版本: %1$s</string>
+    <string name="ui_scope_request_title">申请缺失作用域</string>
+    <string name="ui_scope_request_hint">当前模块已激活，但还缺少以下作用域。点击确定后将向框架发起动态授权申请。</string>
+    <string name="ui_scope_request_confirm">确定申请</string>
+    <string name="ui_scope_requesting">申请中</string>
+    <string name="ui_scope_system">系统框架</string>
+    <string name="ui_scope_approved">已允许: %1$s</string>
+    <string name="ui_scope_denied">已拒绝: %1$s</string>
+    <string name="ui_scope_timeout">申请超时: %1$s</string>
+    <string name="ui_scope_failed">申请失败: %1$s</string>
+    <string name="ui_scope_request_unsupported">当前框架不支持动态申请，请前往 LSPosed 勾选</string>
 </resources>

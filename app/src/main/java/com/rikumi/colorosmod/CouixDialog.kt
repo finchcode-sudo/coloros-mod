@@ -48,6 +48,7 @@ internal fun CouixConfirmDialog(
     confirmLabel: String = stringResource(R.string.ui_confirm),
     dismissLabel: String = stringResource(R.string.ui_cancel),
     confirmColor: Color = Color.Unspecified,
+    extra: (@Composable androidx.compose.foundation.layout.ColumnScope.() -> Unit)? = null,
 ) {
     val actionColor = if (confirmColor == Color.Unspecified) MiuixTheme.colorScheme.primary else confirmColor
     val maxTextHeight = LocalConfiguration.current.screenHeightDp.dp * 0.5f
@@ -87,17 +88,22 @@ internal fun CouixConfirmDialog(
                             ),
                             modifier = Modifier.fillMaxWidth(),
                         )
-                        BasicText(
-                            text = text,
-                            style = MiuixTheme.textStyles.body1.copy(
-                                color = MiuixTheme.colorScheme.onSurfaceVariantSummary,
-                                fontWeight = FontWeight.Normal,
-                                fontSize = 15.sp,
-                                lineHeight = 22.sp,
-                            ),
-                            modifier = Modifier.fillMaxWidth().padding(top = 16.dp)
+                        Column(
+                            Modifier.fillMaxWidth().padding(top = 16.dp)
                                 .heightIn(max = maxTextHeight).verticalScroll(rememberScrollState()),
-                        )
+                        ) {
+                            BasicText(
+                                text = text,
+                                style = MiuixTheme.textStyles.body1.copy(
+                                    color = MiuixTheme.colorScheme.onSurfaceVariantSummary,
+                                    fontWeight = FontWeight.Normal,
+                                    fontSize = 15.sp,
+                                    lineHeight = 22.sp,
+                                ),
+                                modifier = Modifier.fillMaxWidth(),
+                            )
+                            extra?.invoke(this)
+                        }
                     }
                     BasicText(
                         text = confirmLabel,

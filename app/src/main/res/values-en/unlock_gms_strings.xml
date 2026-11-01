@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ui_unlock_gms_group">Google services</string>
+    <string name="ui_unlock_gms">Unlock China-region GMS</string>
+    <string name="ui_unlock_gms_hint">Hides the China-edition markers from Google Play services and Play Store; enable the com.google.android.gms and com.android.vending scopes in LSPosed and force-stop both apps once. The status line on the home page shows whether it is active</string>
+</resources>

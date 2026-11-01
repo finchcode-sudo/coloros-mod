@@ -52,6 +52,7 @@ public class XposedInit extends XposedModule {
     private static volatile boolean sIsSystemServer = false;
     private static volatile boolean sSystemServerHooked = false;
     private static volatile boolean sAppProcessHooked = false;
+    private static volatile boolean sGmsHooked = false;
 
     private static volatile ClassLoader sSystemServerClassLoader = null;
 
@@ -856,6 +857,9 @@ public class XposedInit extends XposedModule {
                 startSettingsLoader();
             }
         }
+        // 解锁国区 GMS: 进程一加载就上报一次, 模块首页可区分"未注入"和"已注入但挂钩失败"。
+        try { com.rikumi.colorosmod.hooks.UnlockGmsHooks.onProcessLoaded(sProcessName); }
+        catch (Throwable t) { log("unlock gms report unavailable: " + t); }
         log("module loaded: framework=" + getFrameworkName() + " v" + getFrameworkVersion()
                 + " api=" + getApiVersion() + " process=" + sProcessName);
     }
@@ -927,6 +931,7 @@ public class XposedInit extends XposedModule {
         sAppContext = null;
         sAppProcessHooked = false;
         sSystemServerHooked = false;
+        sGmsHooked = false;
         sHookedPackageName = "";
         try { XposedBridge.detachFramework(); }
         catch (Throwable t) { log("hot reload framework detach failed: " + t); }
@@ -944,6 +949,8 @@ public class XposedInit extends XposedModule {
         XposedHelpers.cancelQuiescing();
         sAppProcessHooked = false;
         sSystemServerHooked = false;
+        sGmsHooked = false;
+        com.rikumi.colorosmod.hooks.UnlockGmsHooks.resetForHotReload();
         // 重要: HotReloadedParam 就是 ModuleLoadedParam 的子类, 恢复进程身份, 否则新 hooks 挂不上。
         sProcessName = param.getProcessName();
         sIsSystemServer = param.isSystemServer();
@@ -1120,6 +1127,22 @@ public class XposedInit extends XposedModule {
     public void onPackageLoaded(@NonNull PackageLoadedParam param) {
 
         String packageName = param.getPackageName();
+        // 解锁国区 GMS: 与原版(旧 API 的 handleLoadPackage)同一时机, 在应用代码运行之前就装好钩子。
+        if ("com.google.android.gms".equals(packageName) || "com.android.vending".equals(packageName)) {
+            synchronized (XposedInit.class) {
+                if (sGmsHooked) return;
+                sGmsHooked = true;
+            }
+            XC_LoadPackage.LoadPackageParam gms = new XC_LoadPackage.LoadPackageParam();
+            gms.packageName = packageName;
+            gms.processName = sProcessName;
+            gms.classLoader = param.getDefaultClassLoader();
+            gms.appInfo = param.getApplicationInfo();
+            gms.isFirstApplication = param.isFirstPackage();
+            try { com.rikumi.colorosmod.hooks.UnlockGmsHooks.hook(gms); }
+            catch (Throwable error) { log("unlock cn gms hooks unavailable: " + error); }
+            return;
+        }
         if (!"com.android.launcher".equals(packageName)) return;
         synchronized (XposedInit.class) {
             if (sAppProcessHooked) return;
@@ -1149,6 +1172,18 @@ public class XposedInit extends XposedModule {
         if (!MODULE_PACKAGE.equals(lpparam.packageName)) {
             com.rikumi.colorosmod.hooks.SystemIconPackHooks.hook(lpparam.classLoader);
             if (sAppContext != null) startSettingsLoader();
+        }
+        // 解锁国区 GMS: 直接在此安装(每个进程仅一次), 不经过下面的应用白名单与通用初始化链,
+        // 避免被其他 hook 的异常或进程标记拦截, 与原版 UnlockCNGMS 的时机一致。
+        if ("com.google.android.gms".equals(lpparam.packageName)
+                || "com.android.vending".equals(lpparam.packageName)) {
+            synchronized (XposedInit.class) {
+                if (sGmsHooked) return;
+                sGmsHooked = true;
+            }
+            try { com.rikumi.colorosmod.hooks.UnlockGmsHooks.hook(lpparam); }
+            catch (Throwable error) { log("unlock cn gms hooks unavailable: " + error); }
+            return;
         }
         if ("android".equals(lpparam.packageName)) {
 
@@ -1185,7 +1220,9 @@ public class XposedInit extends XposedModule {
                 || "net.oneplus.weather".equals(packageName)
                 || "com.heytap.market".equals(packageName)
                 || "com.android.packageinstaller".equals(packageName)
-                || "com.android.providers.media.module".equals(packageName);
+                || "com.android.providers.media.module".equals(packageName)
+                || "com.google.android.gms".equals(packageName)
+                || "com.android.vending".equals(packageName);
     }
 
     @Override
@@ -1224,6 +1261,11 @@ public class XposedInit extends XposedModule {
             WeatherHooks.hookWeather(lpparam);
         } else if ("com.heytap.market".equals(lpparam.packageName)) {
             StorePurificationHooks.hookStore(lpparam);
+        } else if ("com.google.android.gms".equals(lpparam.packageName)
+                || "com.android.vending".equals(lpparam.packageName)) {
+            // 解锁国区 GMS(移植自 UnlockCNGMS)
+            try { com.rikumi.colorosmod.hooks.UnlockGmsHooks.hook(lpparam); }
+            catch (Throwable error) { log("unlock cn gms hooks unavailable: " + error); }
         } else if ("com.android.packageinstaller".equals(lpparam.packageName)) {
             com.rikumi.colorosmod.hooks.InstallerHooks.hook(lpparam);
         } else if ("com.oplus.pscanvas".equals(lpparam.packageName)) {

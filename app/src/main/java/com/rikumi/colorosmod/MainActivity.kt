@@ -1,6 +1,6 @@
 package com.rikumi.colorosmod
 
-import com.rikumi.colorosmod.hooks.UnlockGmsHooks
+import com.rikumi.colorosmod.hooks.UnlockCnGmsHooks
 import com.rikumi.colorosmod.hooks.AboutCardStyleResolver
 import kotlin.math.roundToInt
 import androidx.compose.ui.graphics.toArgb
@@ -493,7 +493,7 @@ private val PURIFICATION: List<SettingsItem> = listOf(
     GroupTitleItem(R.string.ui_ban_uninstall_group),
     PageEntryItem(R.string.ui_ban_entry, "com.rikumi.colorosmod.BanAppsActivity"),
     GroupTitleItem(R.string.ui_unlock_gms_group),
-    SwitchItem(UnlockGmsHooks.KEY, R.string.ui_unlock_gms, R.string.ui_unlock_gms_hint, masterManaged = false, defaultEnabled = true),
+    SwitchItem(UnlockCnGmsHooks.KEY, R.string.ui_unlock_gms, R.string.ui_unlock_gms_hint, masterManaged = false),
 )
 
 private val SYSTEM_FONTS: List<SettingsItem> = listOf(

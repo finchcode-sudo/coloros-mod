@@ -61,7 +61,6 @@ public class SettingsProvider extends ContentProvider {
     @Override
     public android.os.Bundle call(String method, String arg, android.os.Bundle extras) {
         if ("ban_alive".equals(method) || "ban_record".equals(method)) return banReport(method, arg);
-        if ("gms_report".equals(method)) return gmsReport(arg);
         if (!LAUNCHER_STARTUP_CLAIM.equals(method) && !LAUNCHER_STARTUP_RELEASE.equals(method))
             return super.call(method, arg, extras);
         Context context = getContext();
@@ -94,26 +93,6 @@ public class SettingsProvider extends ContentProvider {
 
     public static final String BAN_STATE = "ban_uninstall_state";
     private static final int BAN_RECORD_LIMIT = 80;
-
-    // 解锁国区 GMS 自检上报: 进程名 / 格式版本 / 钩子数 / 调用数 / 命中数 / 改写数,
-    // 字段之间用制表符分隔。任何进程都可上报(仅本机自检数据), 但长度与格式严格校验。
-    private android.os.Bundle gmsReport(String arg) {
-        Context context = getContext();
-        if (context == null || arg == null || arg.length() > 160) return null;
-        String[] parts = arg.split("\t", -1);
-        if (parts.length != 6 || parts[0].isEmpty() || parts[0].length() > 80) return null;
-        if (!"2".equals(parts[1])) return null;
-        for (int i = 2; i < 6; i++) {
-            if (!parts[i].matches("[0-9]{1,9}")) return null;
-        }
-        SharedPreferences state = context.createDeviceProtectedStorageContext()
-                .getSharedPreferences("gms_state", Context.MODE_PRIVATE);
-        synchronized (BAN_STATE) {
-            state.edit().putString(parts[0],
-                    parts[1] + "\t" + parts[2] + "\t" + parts[3] + "\t" + parts[4] + "\t" + parts[5]).commit();
-        }
-        return new android.os.Bundle();
-    }
 
     // system_server 里的"禁止卸载"hook 通过这里报告安装结果和操作记录; 只接受系统进程调用。
     private android.os.Bundle banReport(String method, String arg) {
